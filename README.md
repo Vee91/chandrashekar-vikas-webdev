@@ -7,5 +7,7 @@ I have four years of work expierience in software development. I have worked on 
 This reporsitory is for WebDev(CS5610) course for summer 1 term.
 
 Source code in this repo is hosted at https://chandrashekar-vikas-webdev.herokuapp.com/
+
 All assignments can be found at https://chandrashekar-vikas-webdev.herokuapp.com/assignment/index.html
+
 Final project is available at https://chandrashekar-vikas-webdev.herokuapp.com/project/index.html
