@@ -9,7 +9,10 @@ define(['angular', 'routes', 'angularRoute'], function (angular, routesConfig) {
     });
 
     app.config(['$routeProvider', '$locationProvider', '$controllerProvider', '$compileProvider', '$filterProvider', '$provide', '$httpProvider', function ($routeProvider, $locationProvider, $controllerProvider, $compileProvider, $filterProvider, $provide, $httpProvider) {
-
+        $locationProvider.html5Mode({
+            enabled: true,
+            requireBase: true
+        });
         app.controller = $controllerProvider.register;
         app.directive = $compileProvider.directive;
         app.filter = $filterProvider.register;
