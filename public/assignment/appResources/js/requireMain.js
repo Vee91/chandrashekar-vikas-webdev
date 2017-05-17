@@ -9,7 +9,8 @@ require.config({
         'routes':'appResources/js/routes',
         'app':'appResources/js/app',
         'loginController':'appResources/js/loginController',
-        'profileController':'appResources/js/profileController'
+        'profileController':'appResources/js/profileController',
+        'registerController':'appResources/js/registerController'
     },
     // shim: makes external libraries reachable
     shim: {
