@@ -1,5 +1,5 @@
 body {
-    padding-top: 60px;
+    padding-top: 70px;
     padding-bottom: 55px;
 }
 
@@ -31,4 +31,8 @@ body {
 .secondary-button:hover, .secondary-button:focus, .secondary-button:active, .secondary-button.active, .open>.dropdown-toggle.secondary-button {
     background-color: #007849;
     color: white;
+}
+
+.list-text{
+    color: #0B3C58;
 }

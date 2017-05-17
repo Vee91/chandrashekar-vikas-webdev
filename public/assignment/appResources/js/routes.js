@@ -12,7 +12,11 @@ define([], function () {
             },
             '/register': {
                 templateUrl: 'pages/register.html',
-                dependencies: []
+                dependencies: ['registerController']
+            },
+            '/websites': {
+                templateUrl: 'pages/website-list.html',
+                dependencies: ['websitesController']
             },
         }
     };

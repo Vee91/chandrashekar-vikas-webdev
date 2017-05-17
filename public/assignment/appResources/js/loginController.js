@@ -5,8 +5,9 @@ define(['angular', 'app'], function (angular, app) {
             $rootScope.header1 = false;
             $rootScope.header2 = true;
             $rootScope.hideProfileButton = true;
-            $rootScope.okButton = false;
-            $rootScope.headerDetails = {text: 'Login'}
+            $rootScope.showOk = false;
+            $rootScope.headerDetails = {text: 'Login'};
+
         }]);
     return app;
 });
