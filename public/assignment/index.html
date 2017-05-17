@@ -2,28 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
     <meta http-equiv="expires" content="0">
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="cache-control" content="no-store">
     <meta http-equiv="cache-control" content="must-revalidate">
     <meta http-equiv="Cache-Control"
-          content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
+          content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
     <META HTTP-EQUIV="Expires" CONTENT="0">
 
-    <link href="/assignment/extResources/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="/assignment/appResources/css/style.css" rel="stylesheet"/>
+    <link href="extResources/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="appResources/css/style.css" rel="stylesheet"/>
 
     <base href="/assignment/">
     <title>Assignment Home Page</title>
 </head>
-<body>
+<body class="body-main">
 
-    <div data-ng-view></div>
+<div ng-show="header" data-ng-include data-src="'header.html'"></div>
+<div ng-show="header1" data-ng-include data-src="'header1.html'"></div>
+<div ng-show="header2" data-ng-include data-src="'header2.html'"></div>
 
-   <script data-main="appResources/js/requireMain.js"
-            src="extResources/js/require-2.1.18.js"></script>
+<div data-ng-view class="container-fluid"></div>
+
+<div data-ng-include data-src="'footer.html'"></div>
+
+<script data-main="appResources/js/requireMain.js"
+        src="extResources/js/require-2.1.18.js"></script>
 </body>
 </html>

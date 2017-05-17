@@ -6,3 +6,33 @@ body {
     padding-top: 60px;
     padding-bottom: 55px;
 }
+
+.page-header {
+    text-align: center;
+    color: #0F1626;
+}
+
+.body-main {
+    background-color: #F5F5F5;
+}
+
+.primary-button {
+    /*background-color: #30415D;*/
+    background-color: #30415D;
+    color: white;
+}
+
+.primary-button:hover, .primary-button:focus, .primary-button:active, .primary-button.active, .open>.dropdown-toggle.primary-button {
+    background-color: #0B3C58;
+    color: white;
+}
+
+.secondary-button {
+    background-color: #57BC90;
+    color: #0F1626;
+}
+
+.secondary-button:hover, .secondary-button:focus, .secondary-button:active, .secondary-button.active, .open>.dropdown-toggle.secondary-button {
+    background-color: #007849;
+    color: white;
+}

@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-
-</head>
-<body>
-    <div class="container">
-        <h1>Login</h1>
-        <input type="text" class="form-control" placeholder="username"/>
-        <input type="password" class="form-control" placeholder="password"/>
-        <a href = "profile" class="btn btn-primary btn-block">Login</a>
-        <a class="btn btn-success btn-block">Register</a>
+<div ng-controller="loginCntrl">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h1 class="page-header">Login</h1>
+        <label for="username"> Username</label>
+        <input id="username" type="text" class="form-control" placeholder="eg: john123"/>
+        <label for="password">Password</label>
+        <input id="password" type="password" class="form-control" placeholder="eg: qwerty123"/>
+        <a href="profile" class="btn btn-default btn-block primary-button">Login</a>
+        <a class="btn btn-default btn-block secondary-button">Register</a>
     </div>
-</body>
-</html>e
+</div>

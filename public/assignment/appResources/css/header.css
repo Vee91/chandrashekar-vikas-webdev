@@ -1,0 +1,11 @@
+.header-back {
+    /*background-color: #494E6B;*/
+    background-color: #0B3C58;
+}
+
+.header-text {
+    color: white;
+    margin-top: 15px;
+    font-size: medium;
+    font-weight: bold;
+}

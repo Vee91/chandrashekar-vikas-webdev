@@ -2,12 +2,14 @@ require.config({
     baseUrl: '',
     // paths: maps ids with paths (no extension)
     paths: {
-        'angular': 'extResources/js/angular.min',
-        'domReady': 'extResources/js/domready',
+        'angular':'extResources/js/angular.min',
+        'domReady':'extResources/js/domready',
         'angularRoute':'extResources/js/angular-route',
         'bootstrap':'extResources/css/bootstrap.min',
         'routes':'appResources/js/routes',
         'app':'appResources/js/app',
+        'loginController':'appResources/js/loginController',
+        'profileController':'appResources/js/profileController'
     },
     // shim: makes external libraries reachable
     shim: {
