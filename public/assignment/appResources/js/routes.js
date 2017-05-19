@@ -18,6 +18,22 @@ define([], function () {
                 templateUrl: 'pages/website-list.html',
                 dependencies: ['websitesController']
             },
+            '/newWebsite': {
+                templateUrl: 'pages/website-new.html',
+                dependencies: ['newWebsiteController']
+            },
+            '/editWebsite': {
+                templateUrl: 'pages/website-edit.html',
+                dependencies: ['editWebsiteController']
+            },
+            '/pages': {
+                templateUrl: 'pages/page-list.html',
+                dependencies: ['pagesController']
+            },
+            '/newPage': {
+                templateUrl: 'pages/page-new.html',
+                dependencies: ['newPageController']
+            }
         }
     };
     return routesConfig;

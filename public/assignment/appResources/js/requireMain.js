@@ -11,7 +11,11 @@ require.config({
         'loginController':'appResources/js/loginController',
         'profileController':'appResources/js/profileController',
         'registerController':'appResources/js/registerController',
-        'websitesController':'appResources/js/websitesController'
+        'websitesController':'appResources/js/websitesController',
+        'newWebsiteController':'appResources/js/newWebsiteController',
+        'editWebsiteController':'appResources/js/editWebsiteController',
+        'pagesController':'appResources/js/pagesController',
+        'newPageController':'appResources/js/newPageController'
     },
     // shim: makes external libraries reachable
     shim: {

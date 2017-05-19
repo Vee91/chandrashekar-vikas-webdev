@@ -1,0 +1,21 @@
+<div ng-controller="newpageCntrl">
+    <div class="hidden-xs col-sm-4">
+        <ul ng-repeat="page in pages" class="list-group">
+            <a><span class="list-text">{{page.name}}</span></a>
+            <a class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>
+            </a>
+        </ul>
+    </div>
+
+    <div class="col-xs-12 col-sm-8">
+        <div class="form-group">
+            <label for="pageName"> Name</label>
+            <input id="pageName" type="text" class="form-control" placeholder="Page Name"/>
+        </div>
+        <div class="form-group">
+            <label for="pageTitle">Title</label>
+            <input id="pageTitle" type="text" class="form-control" placeholder="Page Title"/>
+        </div>
+    </div>
+</div>
