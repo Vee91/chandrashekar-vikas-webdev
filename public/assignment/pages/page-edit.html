@@ -1,8 +1,8 @@
-<div ng-controller="newpageCntrl">
+<div ng-controller="editPageCntrl">
     <div class="hidden-xs col-sm-5">
         <ul ng-repeat="page in pages" class="list-group">
             <a href="widgets"><span class="list-text">{{page.name}}</span></a>
-            <a  href="editPage" class="pull-right">
+            <a href="editPage" class="pull-right">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
         </ul>
@@ -17,5 +17,6 @@
             <label for="pageTitle">Title</label>
             <input id="pageTitle" type="text" class="form-control" placeholder="Page Title"/>
         </div>
+        <a href="pages" class="btn btn-danger btn-block">Delete</a>
     </div>
 </div>

@@ -33,6 +33,30 @@ define([], function () {
             '/newPage': {
                 templateUrl: 'pages/page-new.html',
                 dependencies: ['newPageController']
+            },
+            '/editPage': {
+                templateUrl: 'pages/page-edit.html',
+                dependencies: ['editPageController']
+            },
+            '/widgets': {
+                templateUrl: 'pages/widget-list.html',
+                dependencies: ['widgetsController']
+            },
+            '/chooseWidget': {
+                templateUrl: 'pages/widget-chooser.html',
+                dependencies: ['chooseWidgetController']
+            },
+            '/headingWidget': {
+                templateUrl: 'pages/widget-heading.html',
+                dependencies: ['headingWidgetController']
+            },
+            '/imageWidget': {
+                templateUrl: 'pages/widget-image.html',
+                dependencies: ['imageWidgetController']
+            },
+            '/youtubeWidget': {
+                templateUrl: 'pages/widget-youtube.html',
+                dependencies: ['youtubeWidgetController']
             }
         }
     };

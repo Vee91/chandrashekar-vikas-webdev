@@ -1,0 +1,33 @@
+<div ng-controller="imageWidgetCntrl">
+    <div class="hidden-xs col-sm-5">
+        <ul ng-repeat="widget in widgets" class="list-group">
+            <a ng-click="widgetClick(widget.name);"><span class="list-text">{{widget.name}}</span></a>
+        </ul>
+    </div>
+
+    <div class="col-xs-12 col-sm-7">
+        <div class="form-group">
+            <label for="name"> Name</label>
+            <input id="name" type="text" class="form-control" placeholder="Name"/>
+        </div>
+        <div class="form-group">
+            <label for="text">Text</label>
+            <input id="text" type="text" class="form-control" placeholder="Text"/>
+        </div>
+        <div class="form-group">
+            <label for="url">URL</label>
+            <input id="url" type="text" class="form-control" placeholder="URL"/>
+        </div>
+        <div class="form-group">
+            <label for="width">Width</label>
+            <input id="width" type="text" class="form-control" placeholder="width"/>
+        </div>
+        <div class="form-group">
+            <label for="file">Upload</label>
+            <input id="file" multiple type="file" class="form-control"/>
+        </div>
+        <a
+           class="btn btn-block btn-success">Upload</a>
+        <a href="widgets" class="btn btn-danger btn-block">Delete</a>
+    </div>
+</div>

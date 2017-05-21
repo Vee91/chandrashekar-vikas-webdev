@@ -15,7 +15,13 @@ require.config({
         'newWebsiteController':'appResources/js/newWebsiteController',
         'editWebsiteController':'appResources/js/editWebsiteController',
         'pagesController':'appResources/js/pagesController',
-        'newPageController':'appResources/js/newPageController'
+        'newPageController':'appResources/js/newPageController',
+        'editPageController':'appResources/js/editPageController',
+        'widgetsController':'appResources/js/widgetsController',
+        'chooseWidgetController':'appResources/js/chooseWidgetController',
+        'headingWidgetController':'appResources/js/headingWidgetController',
+        'imageWidgetController':'appResources/js/imageWidgetController',
+        'youtubeWidgetController':'appResources/js/youtubeWidgetController'
     },
     // shim: makes external libraries reachable
     shim: {

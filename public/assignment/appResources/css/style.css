@@ -36,3 +36,15 @@ body {
 .list-text{
     color: #0B3C58;
 }
+
+.widget-toolbar{
+    position: absolute;
+    background-color: white;
+    right:15px;
+    opacity: 0.9;
+    z-index: 8;
+}
+
+.widget{
+    margin-bottom: 15px;
+}

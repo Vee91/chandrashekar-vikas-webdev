@@ -1,0 +1,6 @@
+<div ng-controller="chooseWidgetCntrl" class="col-xs-12">
+
+    <ul ng-repeat="widget in widgets" class="list-group">
+        <a ng-click="widgetClick(widget.name);"><span class="list-text">{{widget.name}}</span></a>
+    </ul>
+</div>

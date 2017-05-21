@@ -5,6 +5,7 @@ define(['angular', 'app'], function (angular, app) {
             $rootScope.header1 = true;
             $rootScope.header2 = false;
             $rootScope.hideProfileButton = false;
+            $rootScope.addIcon1 = false;
             $rootScope.headerDetails = {text: 'Websites'};
 
             function init() {
