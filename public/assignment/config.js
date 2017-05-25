@@ -50,15 +50,15 @@ define([], function () {
             },
             '/headingWidget': {
                 templateUrl: 'views/widget/templates/widget-heading.view.client.html',
-                dependencies: ['headingWidgetController']
+                dependencies: ['editWidgetController']
             },
             '/imageWidget': {
                 templateUrl: 'views/widget/templates/widget-image.view.client.html',
-                dependencies: ['imageWidgetController']
+                dependencies: ['editWidgetController']
             },
             '/youtubeWidget': {
                 templateUrl: 'views/widget/templates/widget-youtube.view.client.html',
-                dependencies: ['youtubeWidgetController']
+                dependencies: ['editWidgetController']
             }
         }
     };
