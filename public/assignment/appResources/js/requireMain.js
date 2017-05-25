@@ -37,7 +37,7 @@ require(['app'], function (app) {
     angular.element().ready(function() {
         // bootstrap the app manually
         require(['domReady'], function() {
-            angular.bootstrap(document, ['myApp']);
+            angular.bootstrap(document, ['WAM']);
         });
 
     });

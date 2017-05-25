@@ -1,6 +1,6 @@
 define(['angular', 'routes', 'angularRoute'], function (angular, routesConfig) {
     'use strict';
-    var app = angular.module('myApp', ['ngRoute']);
+    var app = angular.module('WAM', ['ngRoute']);
 
     app.factory('httpInterceptor', function ($q, $log, $location) {
         return {
@@ -41,7 +41,9 @@ define(['angular', 'routes', 'angularRoute'], function (angular, routesConfig) {
             angular.forEach(routesConfig.routes, function (route, path) {
                 $routeProvider.when(path, {
                     templateUrl: route.templateUrl + '?cd=' + (new Date()).getTime(),
-                    resolve: resolver(route.dependencies)
+                    resolve: resolver(route.dependencies),
+                    controller: route.controller,
+                    controllerAs: route.controllerAs
                 });
             });
         }

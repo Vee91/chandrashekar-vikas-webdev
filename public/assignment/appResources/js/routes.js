@@ -3,59 +3,61 @@ define([], function () {
         defaultRoutePath: '/',
         routes: {
             '/': {
-                templateUrl: 'pages/login.html',
-                dependencies: ['loginController']
+                templateUrl: 'views/user/templates/login.view.client.html',
+                dependencies: ['loginController'],
+                controller: 'loginCntrl',
+                controllerAs: 'model'
             },
-            '/profile': {
-                templateUrl: 'pages/profile.html',
+            "/user/:uid": {
+                templateUrl: 'views/user/templates/profile.view.client.html',
                 dependencies: ['profileController']
             },
             '/register': {
-                templateUrl: 'pages/register.html',
+                templateUrl: 'views/user/templates/register.view.client.html',
                 dependencies: ['registerController']
             },
             '/websites': {
-                templateUrl: 'pages/website-list.html',
+                templateUrl: 'views/website/templates/website-list.view.client.html',
                 dependencies: ['websitesController']
             },
             '/newWebsite': {
-                templateUrl: 'pages/website-new.html',
+                templateUrl: 'views/website/templates/website-new.view.client.html',
                 dependencies: ['newWebsiteController']
             },
             '/editWebsite': {
-                templateUrl: 'pages/website-edit.html',
+                templateUrl: 'views/website/templates/website-edit.view.client.html',
                 dependencies: ['editWebsiteController']
             },
             '/pages': {
-                templateUrl: 'pages/page-list.html',
+                templateUrl: 'views/page/templates/page-list.view.client.html',
                 dependencies: ['pagesController']
             },
             '/newPage': {
-                templateUrl: 'pages/page-new.html',
+                templateUrl: 'views/page/templates/page-new.view.client.html',
                 dependencies: ['newPageController']
             },
             '/editPage': {
-                templateUrl: 'pages/page-edit.html',
+                templateUrl: 'views/page/templates/page-edit.view.client.html',
                 dependencies: ['editPageController']
             },
             '/widgets': {
-                templateUrl: 'pages/widget-list.html',
+                templateUrl: 'views/widget/templates/widget-list.view.client.html',
                 dependencies: ['widgetsController']
             },
             '/chooseWidget': {
-                templateUrl: 'pages/widget-chooser.html',
+                templateUrl: 'views/widget/templates/widget-chooser.view.client.html',
                 dependencies: ['chooseWidgetController']
             },
             '/headingWidget': {
-                templateUrl: 'pages/widget-heading.html',
+                templateUrl: 'views/widget/templates/widget-heading.view.client.html',
                 dependencies: ['headingWidgetController']
             },
             '/imageWidget': {
-                templateUrl: 'pages/widget-image.html',
+                templateUrl: 'views/widget/templates/widget-image.view.client.html',
                 dependencies: ['imageWidgetController']
             },
             '/youtubeWidget': {
-                templateUrl: 'pages/widget-youtube.html',
+                templateUrl: 'views/widget/templates/widget-youtube.view.client.html',
                 dependencies: ['youtubeWidgetController']
             }
         }

@@ -39,13 +39,13 @@ define(['angular', 'app'], function (angular, app) {
             }
 
             $scope.widgetClick = function (name) {
-                if(name == 'Header'){
+                if(name === 'Header'){
                     $location.path('/headingWidget');
                 }
-                else if(name == 'Image'){
+                else if(name === 'Image'){
                     $location.path('/imageWidget');
                 }
-                else if(name == 'YouTube'){
+                else if(name === 'YouTube'){
                     $location.path('/youtubeWidget');
                 }
             }
