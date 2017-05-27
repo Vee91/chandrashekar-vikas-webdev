@@ -19,7 +19,8 @@ require.config({
         'editPageController':'views/page/controllers/page-edit.controller.client',
         'widgetsController':'views/widget/controllers/widget-list.controller.client',
         'chooseWidgetController':'views/widget/controllers/widget-new.controller.client',
-        'editWidgetController':'views/widget/controllers/widget-edit.controller'
+        'editWidgetController':'views/widget/controllers/widget-edit.controller',
+        'userFactory':'services/user.service.client'
     },
     // shim: makes external libraries reachable
     shim: {

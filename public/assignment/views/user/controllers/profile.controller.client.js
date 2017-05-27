@@ -1,6 +1,6 @@
-define(['angular', 'app'], function (angular, app) {
+define(['angular', 'app', 'userFactory'], function (angular, app) {
     app.controller('profileCntrl',
-        ['$scope', '$compile', '$routeParams', '$rootScope', function ($scope, $compile, $routeParams, $rootScope) {
+        ['$scope', '$compile', '$routeParams', '$rootScope', 'UserService', function ($scope, $compile, $routeParams, $rootScope, UserService) {
             $rootScope.header = false;
             $rootScope.header1 = false;
             $rootScope.header2 = true;
@@ -13,23 +13,18 @@ define(['angular', 'app'], function (angular, app) {
             var generated = element.html(el);
             $compile(generated.contents())($scope);
 
+            var vm = this;
+            vm.userId = $routeParams['uid'];
+
             // Event handlers
-            $scope.saveProfile = saveProfile;
+            vm.saveProfile = saveProfile;
 
-            var users = [
-                {_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder"},
-                {_id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley"},
-                {_id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia"},
-                {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose", lastName: "Annunzi"}
-            ];
-
-            var userId = $routeParams['userId'];
-            var found = null;
-
-            for(var u in users) {
-                if(users[u]._id === userId)
-                    $scope.user = users[u];
+            function init() {
+                vm.user = UserService.findUserById(vm.userId);
             }
+
+            init();
+
             function saveProfile() {
 
             }

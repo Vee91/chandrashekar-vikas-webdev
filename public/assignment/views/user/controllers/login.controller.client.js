@@ -1,6 +1,6 @@
-define(['angular', 'app'], function (angular, app) {
+define(['app', 'userFactory'], function (app) {
     app.controller('loginCntrl',
-        ['$scope', '$location', '$rootScope', function ($scope, $location, $rootScope) {
+        ['$scope', '$location', '$rootScope', 'UserService', function ($scope, $location, $rootScope, UserService) {
             $rootScope.header = false;
             $rootScope.header1 = false;
             $rootScope.header2 = true;
@@ -10,30 +10,17 @@ define(['angular', 'app'], function (angular, app) {
 
             var vm = this;
 
-            var users = [
-                {_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder"},
-                {_id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley"},
-                {_id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia"},
-                {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose", lastName: "Annunzi"}
-            ];
+            //Event handlers
+            vm.login = login;
 
-            vm.login = function (username, password) {
-                var found = null;
-
-                for (var u in users) {
-                    var user = users[u];
-                    if (user.username === username &&
-                        user.password === password) {
-                        found = user;
-                    }
-                }
-
-                if (found !== null) {
-                    $location.url('/user/' + found._id);
+            function login(username, password) {
+                var user =
+                    UserService.findUserByCredentials(username, password);
+                if (user != null) {
+                    $location.url("/user/" + user._id);
                 }
                 else {
-                    console.log("not found");
-
+                    vm.error = "Username and Password combination does not exist";
                 }
             }
 
