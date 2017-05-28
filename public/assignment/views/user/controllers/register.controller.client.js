@@ -1,6 +1,6 @@
 define(['app', 'userFactory'], function (app) {
     app.controller('registerCntrl',
-        ['$location', '$rootScope', 'UserService', function ($location, $rootScope, UserService) {
+        ['$location', 'UserService', function ($location, UserService) {
             var vm = this;
 
             //Event handlers

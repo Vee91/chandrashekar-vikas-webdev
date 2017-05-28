@@ -1,6 +1,6 @@
 define(['app', 'userFactory'], function (app) {
     app.controller('loginCntrl',
-        ['$scope', '$location', '$rootScope', 'UserService', function ($scope, $location, $rootScope, UserService) {
+        ['$location', 'UserService', function ($location, UserService) {
 
             var vm = this;
             //Event handlers
