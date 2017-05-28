@@ -4,6 +4,9 @@ define(['app'], function (app) {
             createUser: createUser,
             findUserByCredentials: findUserByCredentials,
             findUserById: findUserById,
+            findUserByUsername: findUserByUsername,
+            deleteUser: deleteUser,
+            updateUser: updateUser,
         };
 
         var users = [
@@ -33,6 +36,36 @@ define(['app'], function (app) {
                 }
             }
             return null;
+        }
+
+        function findUserByUsername(name){
+            for (var u in users) {
+                if (users[u].username === name) {
+                    return users[u];
+                }
+            }
+            return null;
+        }
+
+        function deleteUser(userId) {
+            for (var u in users) {
+                if (users[u]._id === userId) {
+                    users.splice(u, 1);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function updateUser(user) {
+            for (var u in users) {
+                if (users[u]._id === user._id) {
+                    users[u].username = user.username;
+                    users[u].firstName = user.firstName;
+                    users[u].lastName = user.lastName;
+                    users[u].email = user.email;
+                }
+            }
         }
 
         return factory;

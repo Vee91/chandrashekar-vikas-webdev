@@ -1,14 +1,8 @@
 define(['app', 'userFactory'], function (app) {
     app.controller('registerCntrl',
-        ['$scope', '$location', '$rootScope', 'UserService', function ($scope, $location, $rootScope, UserService) {
-            $rootScope.header = false;
-            $rootScope.header1 = false;
-            $rootScope.header2 = true;
-            $rootScope.hideProfileButton = true;
-            $rootScope.showOk = false;
-            $rootScope.headerDetails = {text: 'Register'}
-
+        ['$location', '$rootScope', 'UserService', function ($location, $rootScope, UserService) {
             var vm = this;
+
             //Event handlers
             vm.createUser = createUser;
 

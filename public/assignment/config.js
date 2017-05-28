@@ -20,7 +20,7 @@ define([], function () {
                 controller: 'registerCntrl',
                 controllerAs: 'model'
             },
-            '/user/:uid/website': {
+            "/user/:uid/website": {
                 templateUrl: 'views/website/templates/website-list.view.client.html',
                 dependencies: ['websitesController'],
                 controller: 'websitesCntrl',

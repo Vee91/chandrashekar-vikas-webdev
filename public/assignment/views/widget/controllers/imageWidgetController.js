@@ -1,23 +1,8 @@
 define(['angular', 'app'], function (angular, app) {
     app.controller('imageWidgetCntrl',
-        ['$scope', '$location', '$compile', '$rootScope', function ($scope, $location, $compile, $rootScope) {
-            $rootScope.header = true;
-            $rootScope.header1 = false;
-            $rootScope.header2 = false;
-            $rootScope.hideProfileButton = false;
-            $rootScope.headerDetails = {text: 'Choose Widget', text2: 'Widget Edit'}
+        ['$location', function ($location) {
 
             function init() {
-                var el = '<a href="widgets"><span class="glyphicon glyphicon-chevron-left header-text"></span></a>';
-                var element = angular.element(document.querySelector('#leftArrow'));
-                var generated = element.html(el);
-                $compile(generated.contents())($scope);
-
-                var el2 = '<a href="widgets"><span class="glyphicon glyphicon-ok header-text pull-right"></span></a>';
-                var element2 = angular.element(document.querySelector('#okIcon'));
-                var generated2 = element2.html(el2);
-                $compile(generated2.contents())($scope);
-
                 findwidgets();
             }
 

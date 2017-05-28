@@ -1,3 +1,23 @@
+<nav class="navbar navbar-default navbar-fixed-top header-back">
+    <div class="container-fluid">
+
+        <div id="backIcon" class="col-xs-2 col-sm-1">
+            <a href="pages"><span class="glyphicon glyphicon-chevron-left header-text"></span></a>
+        </div>
+
+        <div class="col-xs-8 col-sm-10">
+            <div class="header-text">
+                Widgets
+            </div>
+        </div>
+
+        <div id="plusIcon" class="col-xs-2 col-sm-1">
+            <a href="chooseWidget"> <span class="glyphicon glyphicon-plus header-text pull-right"></span> </a>
+        </div>
+
+    </div>
+</nav>
+
 <div ng-controller="widgetsCntrl" class="col-xs-12">
     <div class="widget">
         <div class="widget-toolbar pull-right">
@@ -50,3 +70,5 @@
         </div>
     </div>
 </div>
+
+<div data-ng-include data-src="'footer.html'"></div>

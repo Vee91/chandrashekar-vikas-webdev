@@ -1,40 +1,33 @@
-define(['angular', 'app'], function (angular, app) {
+define(['app', 'websiteFactory'], function (app) {
     app.controller('editWebsiteCntrl',
-        ['$scope', '$compile', '$rootScope', function ($scope, $compile, $rootScope) {
-            $rootScope.header = true;
-            $rootScope.header1 = false;
-            $rootScope.header2 = false;
-            $rootScope.hideProfileButton = false;
-            $rootScope.headerDetails = {text: 'Websites', text2: 'Edit Website'}
+        ['$location', '$routeParams', 'WebsiteService', function ($location, $routeParams, WebsiteService) {
+            var vm = this;
+            vm.userId = $routeParams.uid;
+            vm.websiteId = $routeParams.wid;
+
+            // Event handlers
+            vm.saveWebsite = saveWebsite;
+            vm.deleteWebsite = deleteWebsite;
 
             function init() {
-                var el = '<a href="websites"><span class="glyphicon glyphicon-chevron-left header-text"></span></a>';
-                var element = angular.element(document.querySelector('#leftArrow'));
-                var generated = element.html(el);
-                $compile(generated.contents())($scope);
-
-                var el1 = '<a href="newWebsite" class="pull-right"><span class="glyphicon glyphicon-plus header-text"></span></a>';
-                var element1 = angular.element(document.querySelector('#plusIcon1'));
-                var generated1 = element1.html(el1);
-                $compile(generated1.contents())($scope);
-
-                var el2 = '<a href="websites"><span class="glyphicon glyphicon-ok header-text pull-right"></span></a>';
-                var element2 = angular.element(document.querySelector('#okIcon'));
-                var generated2 = element2.html(el2);
-                $compile(generated2.contents())($scope);
-
-                findWebsites();
+                vm.websites = WebsiteService.findWebsitesByUser(vm.userId);
+                vm.website = WebsiteService.findWebsiteById(vm.websiteId);
             }
 
             init();
 
-            function findWebsites() {
-                $scope.websites = [
-                    {name: 'Address Book App'},
-                    {name: 'Blogger'},
-                    {name: 'Blogging App'},
-                    {name: 'Script Testing App'}
-                ];
+            function saveWebsite(website) {
+                if (confirm("Are you sure you want to update the website?")) {
+                    WebsiteService.updateWebsite(website._id, website);
+                    $location.url("/user/" + vm.userId + "/website");
+                }
+            }
+
+            function deleteWebsite(websiteId) {
+                if (confirm("Are you sure you want to delete this website?")) {
+                    WebsiteService.deleteWebsite(websiteId);
+                    $location.url("/user/" + vm.userId + "/website");
+                }
             }
 
         }]);

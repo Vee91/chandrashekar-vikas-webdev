@@ -1,16 +1,14 @@
-<link href="appResources/css/header.css" rel="stylesheet"/>
-
 <nav class="navbar navbar-default navbar-fixed-top header-back">
     <div class="container-fluid">
 
         <div class="col-xs-10">
-            <div class = "header-text">
-               {{headerDetails.text}}
+            <div class="header-text">
+                {{headerDetails.text}}
             </div>
         </div>
 
         <div id="okButton" ng-show="showOk" class="col-xs-2">
-
+            <a ng-click="saveProfile();"> <span class="glyphicon glyphicon-ok header-text pull-right"></span> </a>
         </div>
 
     </div>

@@ -1,3 +1,17 @@
+<nav class="navbar navbar-default navbar-fixed-top header-back">
+    <div class="container-fluid">
+        <div class="col-xs-10">
+            <div class="header-text">
+                Profile
+            </div>
+        </div>
+        <div id="okButton" class="col-xs-2">
+            <a ng-click="model.saveProfile(model.user);"> <span class="glyphicon glyphicon-ok header-text pull-right"></span> </a>
+        </div>
+    </div>
+</nav>
+
+
 <div  class="col-sm-6 col-sm-offset-3">
     <form>
         <div class="form-group">
@@ -18,6 +32,9 @@
         </div>
     </form>
 
-    <a class="btn btn-default btn-block primary-button" href="/user/{{model.user._id}}/website">Websites</a>
+    <a class="btn btn-default btn-block primary-button" href="user/{{model.user._id}}/website">Websites</a>
     <a class="btn btn-danger btn-block" href="/assignment">Logout</a>
 </div>
+
+
+<div data-ng-include data-src="'footer.html'"></div>

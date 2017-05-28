@@ -1,3 +1,30 @@
+<nav class="navbar navbar-default navbar-fixed-top header-back">
+    <div class="container-fluid">
+
+        <div id="leftArrow" class="col-xs-2 col-sm-1">
+            <a href="widgets"><span class="glyphicon glyphicon-chevron-left header-text"></span></a>
+        </div>
+
+        <div class="hidden-xs col-sm-3 header-text">
+            Choose Widget
+        </div>
+
+        <div id="plusIcon1" class="hidden-xs col-sm-1">
+
+        </div>
+
+        <div class="col-xs-8 col-sm-6 header-text">
+            Widget Edit
+        </div>
+
+        <div id="okIcon" class="col-xs-2 col-sm-1">
+            <a href="widgets"><span class="glyphicon glyphicon-ok header-text pull-right"></span></a>
+        </div>
+
+    </div>
+</nav>
+
+
 <div ng-controller="imageWidgetCntrl">
     <div class="hidden-xs col-sm-5">
         <ul ng-repeat="widget in widgets" class="list-group">
@@ -31,3 +58,4 @@
         <a href="widgets" class="btn btn-danger btn-block">Delete</a>
     </div>
 </div>
+<div data-ng-include data-src="'footer.html'"></div>

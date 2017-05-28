@@ -24,7 +24,6 @@ define(['angular', 'routes', 'angularRoute'], function (angular, routesConfig) {
                     var deferred = $q.defer();
 
                     require(dependencies, function () {
-                        // console.log("dependencies loaded " + dependencies);
                         $rootScope.$apply(function () {
                             deferred.resolve();
                         });
@@ -62,7 +61,6 @@ define(['angular', 'routes', 'angularRoute'], function (angular, routesConfig) {
     app.run(['$rootScope', '$location', function ($rootScope, $location) {
 
         $rootScope.$on('$routeChangeSuccess', function (ev, data) {
-            // console.log("$routeChangeSuccess", data);
             if (data.$$route) {
                 $rootScope.route = data.$$route.originalPath.replace("/", "");
             }

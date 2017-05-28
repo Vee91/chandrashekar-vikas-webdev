@@ -1,6 +1,26 @@
+<nav class="navbar navbar-default navbar-fixed-top header-back">
+    <div class="container-fluid">
+
+        <div id="backIcon" class="col-xs-2 col-sm-1">
+            <a href="widgets"><span class="glyphicon glyphicon-chevron-left header-text"></span></a>
+        </div>
+
+        <div class="col-xs-8 col-sm-10">
+            <div class = "header-text">
+                Choose Widget
+            </div>
+        </div>
+
+    </div>
+</nav>
+
+
 <div ng-controller="chooseWidgetCntrl" class="col-xs-12">
 
     <ul ng-repeat="widget in widgets" class="list-group">
         <a ng-click="widgetClick(widget.name);"><span class="list-text">{{widget.name}}</span></a>
     </ul>
 </div>
+
+
+<div data-ng-include data-src="'footer.html'"></div>

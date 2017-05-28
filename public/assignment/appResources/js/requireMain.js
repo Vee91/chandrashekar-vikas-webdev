@@ -20,7 +20,8 @@ require.config({
         'widgetsController':'views/widget/controllers/widget-list.controller.client',
         'chooseWidgetController':'views/widget/controllers/widget-new.controller.client',
         'editWidgetController':'views/widget/controllers/widget-edit.controller',
-        'userFactory':'services/user.service.client'
+        'userFactory':'services/user.service.client',
+        'websiteFactory':'services/website.service.client'
     },
     // shim: makes external libraries reachable
     shim: {

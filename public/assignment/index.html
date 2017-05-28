@@ -15,19 +15,14 @@
 
     <link href="extResources/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="appResources/css/style.css" rel="stylesheet"/>
+    <link href="appResources/css/header.css" rel="stylesheet"/>
 
     <base href="/assignment/">
     <title>Assignment Home Page</title>
 </head>
 <body class="body-main">
 
-<div ng-show="header" data-ng-include data-src="'header.html'"></div>
-<div ng-show="header1" data-ng-include data-src="'header1.html'"></div>
-<div ng-show="header2" data-ng-include data-src="'header2.html'"></div>
-
 <div data-ng-view class="container-fluid"></div>
-
-<div data-ng-include data-src="'footer.html'"></div>
 
 <script data-main="appResources/js/requireMain.js"
         src="extResources/js/require-2.1.18.js"></script>

@@ -1,9 +1,31 @@
-<div ng-controller="pagesCntrl" class="col-xs-12">
+<nav class="navbar navbar-default navbar-fixed-top header-back">
+    <div class="container-fluid">
 
-    <ul ng-repeat="page in pages" class="list-group">
+        <div id="backIcon" class="col-xs-2 col-sm-1">
+            <a href="user/{{model.userId}}/website"><span class="glyphicon glyphicon-chevron-left header-text"></span></a>
+        </div>
+
+        <div class="col-xs-8 col-sm-10">
+            <div class="header-text">
+                Pages
+            </div>
+        </div>
+
+        <div id="plusIcon" class="col-xs-2 col-sm-1">
+            <a href="newPage"> <span class="glyphicon glyphicon-plus header-text pull-right"></span> </a>
+        </div>
+
+    </div>
+</nav>
+
+
+<div class="col-xs-12">
+
+    <ul ng-repeat="page in model.pages" class="list-group">
         <a href="widgets"><span class="list-text">{{page.name}}</span></a>
         <a href="editPage" class="pull-right">
             <span class="glyphicon glyphicon-cog"></span>
         </a>
     </ul>
 </div>
+<div data-ng-include data-src="'footer.html'"></div>
