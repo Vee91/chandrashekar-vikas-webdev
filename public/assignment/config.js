@@ -47,7 +47,7 @@ define([], function () {
             '/user/:uid/website/:wid/page/new': {
                 templateUrl: 'views/page/templates/page-new.view.client.html',
                 dependencies: ['newPageController'],
-                controller: 'newPageCntrl',
+                controller: 'newpageCntrl',
                 controllerAs: 'model'
             },
             '/user/:uid/website/:wid/page/:pid': {
@@ -59,7 +59,7 @@ define([], function () {
             '/user/:uid/website/:wid/page/:pid/widget': {
                 templateUrl: 'views/widget/templates/widget-list.view.client.html',
                 dependencies: ['widgetsController'],
-                controller: 'widgetCntrl',
+                controller: 'widgetsCntrl',
                 controllerAs: 'model'
             },
             '/user/:uid/website/:wid/page/:pid/widget/new': {
@@ -68,24 +68,30 @@ define([], function () {
                 controller: 'chooseWidgetCntrl',
                 controllerAs: 'model'
             },
-            '/headingWidget': {
-                templateUrl: 'views/widget/templates/widget-heading.view.client.html',
+            '/user/:uid/website/:wid/page/:pid/widget/new/:wgn': {
+                templateUrl: 'views/widget/templates/widget-edit.view.client.html',
                 dependencies: ['editWidgetController'],
                 controller: 'editWidgetCntrl',
                 controllerAs: 'model'
             },
-            '/imageWidget': {
-                templateUrl: 'views/widget/templates/widget-image.view.client.html',
+            '/user/:uid/website/:wid/page/:pid/widget/:wgid': {
+                templateUrl: 'views/widget/templates/widget-edit.view.client.html',
+                dependencies: ['editWidgetController'],
+                controller: 'editWidgetCntrl',
+                controllerAs: 'model'
+            }/*,
+            '/user/:uid/website/:wid/page/:pid/widget/new/image': {
+                templateUrl: 'views/widget/editors/widget-image-edit.view.client.html',
                 dependencies: ['editWidgetController'],
                 controller: 'editWidgetCntrl',
                 controllerAs: 'model'
             },
-            '/youtubeWidget': {
-                templateUrl: 'views/widget/templates/widget-youtube.view.client.html',
+            '/user/:uid/website/:wid/page/:pid/widget/new/youtube': {
+                templateUrl: 'views/widget/editors/widget-youtube-edit.view.client.html',
                 dependencies: ['editWidgetController'],
                 controller: 'editWidgetCntrl',
                 controllerAs: 'model'
-            }
+            }*/
         }
     };
     return routesConfig;

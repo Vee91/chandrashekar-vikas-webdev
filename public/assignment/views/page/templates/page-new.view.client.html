@@ -2,7 +2,7 @@
     <div class="container-fluid">
 
         <div id="leftArrow" class="col-xs-2 col-sm-1">
-            <a href="pages"><span class="glyphicon glyphicon-chevron-left header-text"></span></a>
+            <a href="user/{{model.userId}}/website/{{model.websiteId}}/page"><span class="glyphicon glyphicon-chevron-left header-text"></span></a>
         </div>
 
         <div class="hidden-xs col-sm-3 header-text">
@@ -18,18 +18,18 @@
         </div>
 
         <div id="okIcon" class="col-xs-2 col-sm-1">
-            <a href="pages"><span class="glyphicon glyphicon-ok header-text pull-right"></span></a>
+            <a ng-click="model.createPage(model.newPage);"><span class="glyphicon glyphicon-ok header-text pull-right"></span></a>
         </div>
 
     </div>
 </nav>
 
 
-<div ng-controller="newpageCntrl">
+<div>
     <div class="hidden-xs col-sm-5">
-        <ul ng-repeat="page in pages" class="list-group">
-            <a href="widgets"><span class="list-text">{{page.name}}</span></a>
-            <a  href="editPage" class="pull-right">
+        <ul ng-repeat="page in model.pages" class="list-group">
+            <a href="user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget"><span class="list-text">{{page.name}}</span></a>
+            <a  href="user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}" class="pull-right">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
         </ul>
@@ -38,11 +38,11 @@
     <div class="col-xs-12 col-sm-7">
         <div class="form-group">
             <label for="pageName"> Name</label>
-            <input id="pageName" type="text" class="form-control" placeholder="Page Name"/>
+            <input id="pageName" ng-model="model.newPage.name" type="text" class="form-control" placeholder="Page Name"/>
         </div>
         <div class="form-group">
             <label for="pageTitle">Title</label>
-            <input id="pageTitle" type="text" class="form-control" placeholder="Page Title"/>
+            <input id="pageTitle" ng-model="model.newPage.description" type="text" class="form-control" placeholder="Page Title"/>
         </div>
     </div>
 </div>

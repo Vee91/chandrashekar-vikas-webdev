@@ -7,21 +7,21 @@
         </div>
 
         <div class="col-xs-8 col-sm-10">
-            <div class = "header-text">
-                Choose Widget
+            <div class="header-text">
+                Widget Edit
             </div>
+        </div>
+
+        <div id="okIcon" class="col-xs-2 col-sm-1">
+            <a ng-click="model.addWidget(model.widget);"><span class="glyphicon glyphicon-ok header-text pull-right"></span></a>
         </div>
 
     </div>
 </nav>
 
 
-<div class="col-xs-12">
-
-    <ul ng-repeat="widget in model.widgetTypes" class="list-group">
-        <a ng-click="model.widgetClick(widget.name);"><span class="list-text">{{widget.name}}</span></a>
-    </ul>
+<div class="col-sm-6 col-sm-offset-3">
+    <div ng-include="model.includeWidgetEdit()"></div>
 </div>
-
 
 <div data-ng-include data-src="'footer.html'"></div>

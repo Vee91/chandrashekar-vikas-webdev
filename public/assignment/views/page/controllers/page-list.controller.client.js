@@ -1,16 +1,12 @@
-define(['app'], function (app) {
+define(['app', 'pageFactory'], function (app) {
     app.controller('pagesCntrl',
-        ['$routeParams', function ($routeParams) {
+        ['$routeParams', 'PageService', function ($routeParams, PageService) {
             var vm = this;
             vm.userId = $routeParams.uid;
+            vm.websiteId = $routeParams.wid;
 
             function init() {
-                vm.pages = [
-                    {name: 'Blog Post'},
-                    {name: 'Blogs'},
-                    {name: 'Home'},
-                    {name: 'About'},
-                    {name: 'Contact Us'}];
+                vm.pages = PageService.findPageByWebsiteId(vm.websiteId);
             }
             init();
 

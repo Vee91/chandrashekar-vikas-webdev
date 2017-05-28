@@ -1,16 +1,23 @@
-define(['angular', 'app'], function (angular, app) {
+define(['app'], function (app) {
     app.controller('chooseWidgetCntrl',
-        ['$scope', '$location', '$compile', '$rootScope', function ($scope, $location, $compile, $rootScope) {
+        ['$routeParams', '$location', function ($routeParams, $location) {
+            var vm = this;
+            vm.userId=$routeParams.uid;
+            vm.websiteId=$routeParams.wid;
+            vm.pageId=$routeParams.pid;
+            vm.widgetId=$routeParams.wgid;
 
             function init() {
                 findwidgets();
             }
-
             init();
 
+            //Event handlers
+            vm.widgetClick = widgetClick;
+
             function findwidgets() {
-                $scope.widgets = [
-                    {name: 'Header'},
+                vm.widgetTypes = [
+                    {name: 'Heading'},
                     {name: 'Label'},
                     {name: 'HTML'},
                     {name: 'Text Input'},
@@ -23,16 +30,8 @@ define(['angular', 'app'], function (angular, app) {
                 ];
             }
 
-            $scope.widgetClick = function (name) {
-                if(name == 'Header'){
-                    $location.path('/headingWidget');
-                }
-                else if(name == 'Image'){
-                    $location.path('/imageWidget');
-                }
-                else if(name == 'YouTube'){
-                    $location.path('/youtubeWidget');
-                }
+            function widgetClick(name) {
+                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/new/" + name.toLowerCase());
             }
         }]);
     return app;

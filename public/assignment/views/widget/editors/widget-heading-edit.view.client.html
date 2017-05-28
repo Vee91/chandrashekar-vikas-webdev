@@ -1,0 +1,21 @@
+<div class="form-group">
+    <label for="name"> Name</label>
+    <input id="name" ng-model="model.widget.name" type="text" class="form-control" placeholder="Name"/>
+</div>
+<div class="form-group">
+    <label for="text">Text</label>
+    <input id="text" ng-model="model.widget.text" type="text" class="form-control" placeholder="Text"/>
+</div>
+<div class="form-group">
+    <label for="size">Size</label>
+    <select id="size" ng-model="model.widget.size" class="form-control">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+    </select>
+
+</div>
+<a ng-show="model.widget._id" ng-click="model.deleteWidget(model.widget._id)" class="btn btn-danger btn-block">Delete</a>

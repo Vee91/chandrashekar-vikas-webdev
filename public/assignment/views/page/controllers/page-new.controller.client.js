@@ -1,22 +1,26 @@
-define(['angular', 'app'], function (angular, app) {
+define(['app', 'pageFactory'], function (app) {
     app.controller('newpageCntrl',
-        ['$scope', function ($scope) {
+        ['$routeParams', '$location', 'PageService', function ($routeParams, $location, PageService) {
+            var vm = this;
+            vm.userId = $routeParams.uid;
+            vm.websiteId = $routeParams.wid;
+
+            // Event handlers
+            vm.createPage = createPage;
+
 
             function init() {
-                findpages();
+                vm.pages = PageService.findPageByWebsiteId(vm.websiteId);
             }
-
             init();
-
-            function findpages() {
-                $scope.pages = [
-                    {name: 'Blog Post'},
-                    {name: 'Blogs'},
-                    {name: 'Home'},
-                    {name: 'About'},
-                    {name: 'Contact Us'}
-                ];
+            
+            function createPage(page) {
+                if(confirm ("Are you sure you want to create new page?")) {
+                    vm.pages = PageService.createPage(vm.websiteId, page);
+                    $location.url("user/"+vm.userId+"/website/"+vm.websiteId+"/page");
+                }
             }
+
         }]);
     return app;
 });

@@ -1,38 +1,53 @@
-define(['angular', 'app'], function (angular, app) {
-    app.controller('headingWidgetCntrl',
-        ['$location', function ($location) {
+define(['app', 'widgetFactory'], function (app) {
+    app.controller('editWidgetCntrl',
+        ['$routeParams', '$location', 'WidgetService', function ($routeParams, $location, WidgetService) {
+            var vm = this;
+            vm.userId = $routeParams.uid;
+            vm.websiteId = $routeParams.wid;
+            vm.pageId = $routeParams.pid;
+            vm.widgetName = $routeParams.wgn;
+            vm.widgetId = $routeParams.wgid;
 
             function init() {
-                findwidgets();
+
             }
 
             init();
 
-            function findwidgets() {
-                $scope.widgets = [
-                    {name: 'Header'},
-                    {name: 'Label'},
-                    {name: 'HTML'},
-                    {name: 'Text Input'},
-                    {name: 'Link'},
-                    {name: 'Button'},
-                    {name: 'Image'},
-                    {name: 'YouTube'},
-                    {name: 'Data Table'},
-                    {name: 'Repeater'}
-                ];
+            //Event handlers
+            vm.includeWidgetEdit = includeWidgetEdit;
+            vm.addWidget = addWidget;
+            vm.deleteWidget = deleteWidget;
+
+            function includeWidgetEdit() {
+                if (vm.widgetName != undefined) {
+                    var url = 'views/widget/editors/widget-' + vm.widgetName.toLowerCase() + '-edit.view.client.html';
+                    return url;
+                }
+                else if (vm.widgetId != undefined) {
+                    vm.widget = WidgetService.findWidgetById(vm.widgetId);
+                    var url = 'views/widget/editors/widget-' + vm.widget.widgetType.toLowerCase() + '-edit.view.client.html';
+                    return url;
+                }
             }
 
-            $scope.widgetClick = function (name) {
-                if(name == 'Header'){
-                    $location.path('/headingWidget');
+            function addWidget(widget) {
+                if (confirm("Are you sure you want to make these changes?")) {
+                    if (vm.widgetName != undefined) {
+                        widget.widgetType = vm.widgetName;
+                        WidgetService.createWidget(vm.pageId, widget);
+                        $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+                    }
+                    else if (vm.widgetId != undefined) {
+                        WidgetService.updateWidget(vm.widget._id, vm.widget);
+                        $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+                    }
                 }
-                else if(name == 'Image'){
-                    $location.path('/imageWidget');
-                }
-                else if(name == 'YouTube'){
-                    $location.path('/youtubeWidget');
-                }
+            }
+
+            function deleteWidget(widgetId) {
+                WidgetService.deleteWidget(widgetId);
+                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
             }
 
         }]);

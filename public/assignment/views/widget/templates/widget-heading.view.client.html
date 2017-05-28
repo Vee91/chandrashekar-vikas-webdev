@@ -1,51 +1,8 @@
-<nav class="navbar navbar-default navbar-fixed-top header-back">
-    <div class="container-fluid">
-
-        <div id="leftArrow" class="col-xs-2 col-sm-1">
-            <a href="widgets"><span class="glyphicon glyphicon-chevron-left header-text"></span></a>
-        </div>
-
-        <div class="hidden-xs col-sm-3 header-text">
-            Choose Widget
-        </div>
-
-        <div id="plusIcon1" class="hidden-xs col-sm-1">
-
-        </div>
-
-        <div class="col-xs-8 col-sm-6 header-text">
-            Widget Edit
-        </div>
-
-        <div id="okIcon" class="col-xs-2 col-sm-1">
-            <a href="widgets"><span class="glyphicon glyphicon-ok header-text pull-right"></span></a>
-        </div>
-
-    </div>
-</nav>
-
-
-<div ng-controller="headingWidgetCntrl">
-    <div class="hidden-xs col-sm-5">
-        <ul ng-repeat="widget in widgets" class="list-group">
-            <a ng-click="widgetClick(widget.name);"><span class="list-text">{{widget.name}}</span></a>
-        </ul>
-    </div>
-
-    <div class="col-xs-12 col-sm-7">
-        <div class="form-group">
-            <label for="name"> Name</label>
-            <input id="name" type="text" class="form-control" placeholder="Name"/>
-        </div>
-        <div class="form-group">
-            <label for="text">Text</label>
-            <input id="text" type="text" class="form-control" placeholder="Text" value="League of Legends"/>
-        </div>
-        <div class="form-group">
-            <label for="size">Size</label>
-            <input id="size" type="text" class="form-control" placeholder="Size" value="3"/>
-        </div>
-        <a href="widgets" class="btn btn-danger btn-block">Delete</a>
-    </div>
+<div ng-switch="widget.size">
+    <h1 ng-switch-when="1">{{widget.text}}</h1>
+    <h2 ng-switch-when="2">{{widget.text}}</h2>
+    <h3 ng-switch-when="3">{{widget.text}}</h3>
+    <h4 ng-switch-when="4">{{widget.text}}</h4>
+    <h5 ng-switch-when="5">{{widget.text}}</h5>
+    <h6 ng-switch-when="6">{{widget.text}}</h6>
 </div>
-<div data-ng-include data-src="'footer.html'"></div>
