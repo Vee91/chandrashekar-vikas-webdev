@@ -9,16 +9,28 @@ define(['app', 'userFactory'], function (app) {
             vm.saveProfile = saveProfile;
 
             function init() {
-                vm.user = UserService.findUserById(vm.userId);
+                UserService.findUserById(vm.userId)
+                    .then(renderUser, userError);
             }
 
             init();
 
             function saveProfile(user) {
-                if(confirm('Are you sure you want to save changes?')){
-                    UserService.updateUser(user);
-                    alert('Profile Saved');
+                if (confirm('Are you sure you want to save changes?')) {
+                    UserService
+                        .updateUser(user._id, user)
+                        .then(function () {
+                            alert("Profile saved successfully");
+                        })
                 }
+            }
+
+            function renderUser(user) {
+                vm.user = user;
+            }
+
+            function userError() {
+                vm.error = "User not found";
             }
 
         }]);

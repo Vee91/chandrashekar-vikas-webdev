@@ -7,14 +7,15 @@ define(['app', 'userFactory'], function (app) {
             vm.login = login;
 
             function login(username, password) {
-                var user =
-                    UserService.findUserByCredentials(username, password);
-                if (user != null) {
-                    $location.url("/user/" + user._id);
-                }
-                else {
-                    vm.error = "Username and Password combination does not exist";
-                }
+                    UserService.findUserByCredentials(username, password).then(function (found) {
+                        if (found != null) {
+                            $location.url("/user/" + found._id);
+                        }
+                        else {
+                            vm.error = "Username and Password combination does not exist";
+                        }
+                    });
+
             }
 
 

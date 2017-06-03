@@ -1,5 +1,5 @@
 define(['app'], function (app) {
-    app.factory('UserService', function () {
+    app.factory('UserService', function ($http) {
         var factory = {
             createUser: createUser,
             findUserByCredentials: findUserByCredentials,
@@ -22,29 +22,25 @@ define(['app'], function (app) {
         }
 
         function findUserByCredentials(username, password) {
-            for (var u in users) {
-                if (users[u].username === username && users[u].password === password) {
-                    return users[u];
-                }
-            }
+            var url = "/api/user?username=" + username + "&password=" + password;
+            return $http.get(url).then(function (response) {
+                return response.data;
+            });
         }
 
         function findUserById(id) {
-            for (var u in users) {
-                if (users[u]._id === id) {
-                    return users[u];
-                }
-            }
-            return null;
+            var url = "/api/user/" + id;
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
-        function findUserByUsername(name){
-            for (var u in users) {
-                if (users[u].username === name) {
-                    return users[u];
-                }
-            }
-            return null;
+        function findUserByUsername(name) {
+            var url = "/api/user?username=" + name;
+            return $http.get(url).then(function (response) {
+                return response.data;
+            });
         }
 
         function deleteUser(userId) {
@@ -57,15 +53,12 @@ define(['app'], function (app) {
             return false;
         }
 
-        function updateUser(user) {
-            for (var u in users) {
-                if (users[u]._id === user._id) {
-                    users[u].username = user.username;
-                    users[u].firstName = user.firstName;
-                    users[u].lastName = user.lastName;
-                    users[u].email = user.email;
-                }
-            }
+        function updateUser(userId, user) {
+            var url = "/api/user/" + userId;
+            return $http.put(url, user)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         return factory;
