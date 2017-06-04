@@ -8,14 +8,20 @@ define(['app', 'websiteFactory'], function (app) {
             vm.createWebsite = createWebsite;
 
             function init() {
-                vm.websites = WebsiteService.findWebsitesByUser(vm.userId);
+                WebsiteService.findWebsitesByUser(vm.userId)
+                    .then(function (found) {
+                        vm.websites = found;
+                    });
             }
             init();
 
             function createWebsite(website) {
                 if(confirm ("Are you sure you want to create new website?")) {
-                    vm.websites = WebsiteService.createWebsite(vm.userId, website);
-                    $location.url("/user/"+vm.userId+"/website")
+                    WebsiteService.createWebsite(vm.userId, website)
+                        .then(function (found) {
+                            vm.websites = found;
+                            $location.url("/user/"+vm.userId+"/website")
+                        });
                 }
             }
 

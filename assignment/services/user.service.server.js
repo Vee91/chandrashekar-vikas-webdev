@@ -1,4 +1,4 @@
-var app = require('../../express')
+var app = require('../../express');
 
 var users = [
     {_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder", email:"alice.wonder@gmail.com"},
@@ -38,7 +38,7 @@ function findAllUsers(req, res) {
     }
     else if (username) {
         for (var j in users) {
-            if (users[j].username === name) {
+            if (users[j].username === username) {
                 res.json(users[j]);
                 return;
             }
@@ -65,7 +65,6 @@ function updateUser(req, res) {
 
 function createUser(req, res) {
     var user = req.body;
-    user._id = generateUUID();
     users.push(user);
     res.json(user);
 }
@@ -80,17 +79,4 @@ function deleteUser(req, res) {
         }
     }
     res.sendStatus(404);
-}
-
-function generateUUID() {
-    var d = new Date().getTime();
-    if (window.performance && typeof window.performance.now === "function") {
-        d += performance.now();
-    }
-    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-        var r = (d + Math.random() * 16) % 16 | 0;
-        d = Math.floor(d / 16);
-        return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-    });
-    return uuid;
 }

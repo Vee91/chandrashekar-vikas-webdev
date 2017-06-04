@@ -5,8 +5,12 @@ define(['app', 'websiteFactory'], function (app) {
             vm.userId = $routeParams.uid;
 
             function init() {
-                vm.websites = WebsiteService.findWebsitesByUser(vm.userId);
+                WebsiteService.findWebsitesByUser(vm.userId)
+                    .then(function (found) {
+                        vm.websites = found;
+                    });
             }
+
             init();
 
         }]);

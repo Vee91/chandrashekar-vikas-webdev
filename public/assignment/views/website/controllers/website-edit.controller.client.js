@@ -10,23 +10,33 @@ define(['app', 'websiteFactory'], function (app) {
             vm.deleteWebsite = deleteWebsite;
 
             function init() {
-                vm.websites = WebsiteService.findWebsitesByUser(vm.userId);
-                vm.website = WebsiteService.findWebsiteById(vm.websiteId);
+                WebsiteService.findWebsitesByUser(vm.userId)
+                    .then(function (found) {
+                        vm.websites = found;
+                    });
+                WebsiteService.findWebsiteById(vm.websiteId)
+                    .then(function (found) {
+                        vm.website = found;
+                    });
             }
 
             init();
 
             function saveWebsite(website) {
                 if (confirm("Are you sure you want to update the website?")) {
-                    WebsiteService.updateWebsite(website._id, website);
-                    $location.url("/user/" + vm.userId + "/website");
+                    WebsiteService.updateWebsite(website._id, website)
+                        .then(function () {
+                            $location.url("/user/" + vm.userId + "/website");
+                        });
                 }
             }
 
             function deleteWebsite(websiteId) {
                 if (confirm("Are you sure you want to delete this website?")) {
-                    WebsiteService.deleteWebsite(websiteId);
-                    $location.url("/user/" + vm.userId + "/website");
+                    WebsiteService.deleteWebsite(websiteId)
+                        .then(function () {
+                            $location.url("/user/" + vm.userId + "/website");
+                        });
                 }
             }
 

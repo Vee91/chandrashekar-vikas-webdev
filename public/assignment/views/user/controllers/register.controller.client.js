@@ -11,22 +11,29 @@ define(['app', 'userFactory'], function (app) {
                     password !== undefined && password !== "" &&
                     confirm !== undefined && confirm !== "" &&
                     password === confirm) {
-                    var uid = generateUUID();
-                    var user = {
-                        _id: uid,
-                        username: username,
-                        password: password,
-                        firstName: username,
-                        lastName: username,
-                        email: username + "@gmail.com"
-                    };
 
-                    var result = UserService.createUser(user);
-                    if (result) {
-                        $location.url("/user/" + user._id);
-                    } else {
-                        vm.error = "Failed to create user";
-                    }
+                    UserService
+                        .findUserByUsername(username)
+                        .then(
+                            function () {
+                                vm.error = "Sorry, that username is taken";
+                            },
+                            function () {
+                                var newUser = {
+                                    _id: generateUUID(),
+                                    username: username,
+                                    password: password,
+                                    firstName: username,
+                                    lastName: username,
+                                    email: username + "@gmail.com"
+                                };
+                                return UserService
+                                    .createUser(newUser);
+                            }
+                        )
+                        .then(function (user) {
+                            $location.url('/user/' + user._id);
+                        });
                 }
                 else {
                     if (username === undefined || username === "") {

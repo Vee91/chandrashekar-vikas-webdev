@@ -1,5 +1,5 @@
 define(['app'], function (app) {
-    app.factory('WebsiteService', function () {
+    app.factory('WebsiteService', function ($http) {
         var factory = {
             findWebsitesByUser: findWebsitesByUser,
             findWebsiteById: findWebsiteById,
@@ -19,22 +19,19 @@ define(['app'], function (app) {
         ];
 
         function findWebsitesByUser(userId) {
-            var result = [];
-            for (var w in websites) {
-                if (websites[w].developerId == userId) {
-                    result.push(websites[w]);
-                }
-            }
-            return result;
+            var url = "/api/user/" + userId + "/website";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function findWebsiteById(websiteId) {
-            for (var w in websites) {
-                if (websites[w]._id === websiteId) {
-                    return websites[w]
-                }
-            }
-            return null;
+            var url = "/api/website/" + websiteId;
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function createWebsite(userID, website) {
@@ -45,29 +42,27 @@ define(['app'], function (app) {
                 developerId: userID,
                 description: website.desc
             };
-            websites.push(newWebsite);
-            return findWebsitesByUser(userID);
+            var url = "/api/user/"+userID+"/website";
+            return $http.post(url, newWebsite)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function deleteWebsite(websiteId) {
-            for (var w in websites) {
-                if (websites[w]._id === websiteId) {
-                    websites.splice(w, 1);
-                    return true;
-                }
-            }
-            return false;
+            var url = "/api/website/"+websiteId;
+            return $http.delete(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function updateWebsite(websiteId, website) {
-            for (var w in websites) {
-                if (websites[w]._id === websiteId) {
-                    websites[w].name = website.name;
-                    websites[w].description = website.description
-                    return true;
-                }
-            }
-            return false;
+            var url = "/api/website/" + websiteId;
+            return $http.put(url, website)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function generateUUID() {
