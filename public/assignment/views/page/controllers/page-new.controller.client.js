@@ -10,14 +10,20 @@ define(['app', 'pageFactory'], function (app) {
 
 
             function init() {
-                vm.pages = PageService.findPageByWebsiteId(vm.websiteId);
+                PageService.findPageByWebsiteId(vm.websiteId)
+                    .then(function (found) {
+                        vm.pages = found;
+                    });
             }
             init();
             
             function createPage(page) {
                 if(confirm ("Are you sure you want to create new page?")) {
-                    vm.pages = PageService.createPage(vm.websiteId, page);
-                    $location.url("user/"+vm.userId+"/website/"+vm.websiteId+"/page");
+                    PageService.createPage(vm.websiteId, page)
+                        .then(function (found) {
+                            vm.pages = found;
+                            $location.url("user/"+vm.userId+"/website/"+vm.websiteId+"/page");
+                        });
                 }
             }
 

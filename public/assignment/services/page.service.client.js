@@ -1,61 +1,51 @@
 define(['app'], function (app) {
-    app.service('PageService', function () {
+    app.service('PageService', function ($http) {
         this.createPage = createPage;
         this.findPageByWebsiteId = findPageByWebsiteId;
         this.findPageById = findPageById;
         this.updatePage = updatePage;
         this.deletePage = deletePage;
 
-        var pages = [
-            {"_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem"},
-            {"_id": "432", "name": "Post 2", "websiteId": "456", "description": "Lorem"},
-            {"_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem"}];
-
         function createPage(websiteId, page) {
             var pid = generateUUID();
             var newPage = {_id: pid, name: page.name, websiteId: websiteId, description: page.description}
-            pages.push(newPage);
-            return findPageByWebsiteId(websiteId);
+            var url = "/api/website/" + websiteId + "/page";
+            return $http.post(url, newPage)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function findPageByWebsiteId(websiteId) {
-            var result = [];
-            for (var p in pages) {
-                if (pages[p].websiteId === websiteId) {
-                    result.push(pages[p]);
-                }
-            }
-            return result;
+            var url = "/api/website/" + websiteId + "/page";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function findPageById(pageId) {
-            for (var p in pages) {
-                if (pages[p]._id === pageId) {
-                    return pages[p]
-                }
-            }
-            return null;
+            var url = "/api/page/" + pageId;
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function updatePage(pageId, page) {
-            for (var p in pages) {
-                if (pages[p]._id === pageId) {
-                    pages[p].name = page.name;
-                    pages[p].description = page.description;
-                    return true;
-                }
-            }
-            return false;
+            var url = "/api/page/" + pageId;
+            return $http.put(url, page)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function deletePage(pageId) {
-            for (var p in pages) {
-                if (pages[p]._id === pageId) {
-                    pages.splice(p, 1);
-                    return true;
-                }
-            }
-            return false;
+            var url = "/api/page/" + pageId;
+            return $http.delete(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function generateUUID() {

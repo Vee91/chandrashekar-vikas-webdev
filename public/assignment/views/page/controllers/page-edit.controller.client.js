@@ -11,22 +11,33 @@ define(['app', 'pageFactory'], function (app) {
             vm.deletePage = deletePage;
 
             function init() {
-                vm.pages = PageService.findPageByWebsiteId(vm.websiteId);
-                vm.page = PageService.findPageById(vm.pageId);
+                PageService.findPageByWebsiteId(vm.websiteId)
+                    .then(function (found) {
+                        vm.pages = found;
+                    });
+                PageService.findPageById(vm.pageId)
+                    .then(function (found) {
+                        vm.page = found;
+                    });
             }
+
             init();
 
             function savePage(page) {
                 if (confirm("Are you sure you want to update the page?")) {
-                    PageService.updatePage(page._id, page);
-                    $location.url("user/"+vm.userId+"/website/"+vm.websiteId+"/page");
+                    PageService.updatePage(page._id, page)
+                        .then(function () {
+                            $location.url("user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+                        });
                 }
             }
 
             function deletePage(pageId) {
                 if (confirm("Are you sure you want to delete this page?")) {
-                    PageService.deletePage(pageId);
-                    $location.url("user/"+vm.userId+"/website/"+vm.websiteId+"/page");
+                    PageService.deletePage(pageId)
+                        .then(function () {
+                            $location.url("user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+                        });
                 }
             }
 

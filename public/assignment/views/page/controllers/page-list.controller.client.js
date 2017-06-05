@@ -6,7 +6,10 @@ define(['app', 'pageFactory'], function (app) {
             vm.websiteId = $routeParams.wid;
 
             function init() {
-                vm.pages = PageService.findPageByWebsiteId(vm.websiteId);
+                PageService.findPageByWebsiteId(vm.websiteId)
+                    .then(function (found) {
+                        vm.pages = found;
+                    });
             }
             init();
 
