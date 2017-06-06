@@ -33,6 +33,7 @@ app.get('/api/widget/:widgetId', findWidgetById);
 app.put('/api/widget/:widgetId', updateWidget);
 app.delete('/api/widget/:widgetId', deleteWidget);
 app.post("/api/upload", upload.single('myFile'), uploadImage);
+app.put("/api/page/:pageId/widget", sortWidget);
 
 function createWidget(req, res) {
     var widget = req.body;
@@ -116,4 +117,13 @@ function uploadImage(req, res) {
     }
     widgets.push(newWidget);
     res.redirect("/assignment/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/" + widgetId);
+}
+
+function sortWidget(req, res) {
+    var index1 = req.query.start;
+    var index2 = req.query.end;
+    var pageId = req.params.pageId;
+    console.log(widgets);
+    widgets.splice(index2, 0, widgets.splice(index1, 1)[0]);
+    console.log(widgets);
 }

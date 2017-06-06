@@ -23,7 +23,8 @@ require.config({
         'userFactory':'services/user.service.client',
         'websiteFactory':'services/website.service.client',
         'pageFactory':'services/page.service.client',
-        'widgetFactory':'services/widget.service.client'
+        'widgetFactory':'services/widget.service.client',
+        'wbdv-sortable':'directives/wbdv-sortable'
     },
     // shim: makes external libraries reachable
     shim: {

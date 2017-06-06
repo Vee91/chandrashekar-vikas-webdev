@@ -6,6 +6,7 @@ define(['app'], function (app) {
             findWidgetById: findWidgetById,
             updateWidget: updateWidget,
             deleteWidget: deleteWidget,
+            sort: sort,
         };
 
         function createWidget(pageId, widget) {
@@ -48,6 +49,14 @@ define(['app'], function (app) {
                 .then(function (response) {
                     return response.data;
                 });
+        }
+
+        function sort(start, end, pageId) {
+            var url = "/api/page/" + pageId + "/widget?start=index1&end=index2";
+            url = url
+                .replace("index1",start)
+                .replace("index2",end);
+            return $http.put(url);
         }
 
         function generateUUID() {

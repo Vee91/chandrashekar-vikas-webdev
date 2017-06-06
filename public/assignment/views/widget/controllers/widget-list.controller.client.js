@@ -1,4 +1,4 @@
-define(['app', 'widgetFactory'], function (app) {
+define(['app', 'widgetFactory', 'wbdv-sortable'], function (app) {
     app.controller('widgetsCntrl',
         ['$routeParams', '$sce', 'WidgetService', function ($routeParams, $sce, WidgetService) {
             var vm = this;
@@ -12,6 +12,9 @@ define(['app', 'widgetFactory'], function (app) {
                     .then(function (found) {
                         vm.widgets = found;
                     });
+               /* $("#widgetList").sortable({
+                    axis: "y"
+                });*/
             }
             init();
 
