@@ -8,7 +8,10 @@ define(['app', 'widgetFactory'], function (app) {
             vm.widgetId = $routeParams.wgid;
 
             function init() {
-                vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
+                WidgetService.findWidgetsByPageId(vm.pageId)
+                    .then(function (found) {
+                        vm.widgets = found;
+                    });
             }
             init();
 
