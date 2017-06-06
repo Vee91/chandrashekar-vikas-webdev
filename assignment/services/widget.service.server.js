@@ -1,4 +1,15 @@
 var app = require('../../express');
+var mime = require('mime');
+var multer = require('multer'); // npm install multer --save
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, __dirname + '/../../public/uploads')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now() + '.' + mime.extension(file.mimetype));
+    }
+});
+var upload = multer({storage: storage});
 
 var widgets = [
     {"_id": "123", "widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},
@@ -21,6 +32,7 @@ app.get('/api/page/:pageId/widget', findAllWidgetsForPage);
 app.get('/api/widget/:widgetId', findWidgetById);
 app.put('/api/widget/:widgetId', updateWidget);
 app.delete('/api/widget/:widgetId', deleteWidget);
+app.post("/api/upload", upload.single('myFile'), uploadImage);
 
 function createWidget(req, res) {
     var widget = req.body;
@@ -43,7 +55,6 @@ function findWidgetById(req, res) {
     var widgetId = req.params.widgetId;
     for (var w in widgets) {
         if (widgets[w]._id === widgetId) {
-            console.log('found')
             res.json(widgets[w]);
             return;
         }
@@ -74,4 +85,35 @@ function deleteWidget(req, res) {
         }
     }
     res.sendStatus(404);
+}
+
+function uploadImage(req, res) {
+
+    var widgetId = req.body.widgetId;
+    var width = req.body.width;
+    var userId = req.body.userId;
+    var websiteId = req.body.websiteId;
+    var pageId = req.body.pageId;
+    var myFile = req.file;
+    var nameGiven = req.body.name;
+
+    var newWidget =
+        {
+            "_id": widgetId, "widgetType": "IMAGE", "pageId": pageId, "width": width,
+            "url": "/uploads/" + myFile.filename,
+        };
+    if (nameGiven) {
+        newWidget.name = nameGiven;
+    }
+    else {
+        newWidget.name = myFile.originalname;
+    }
+    if (width) {
+        newWidget.width = width;
+    }
+    else {
+        newWidget.width = "100%";
+    }
+    widgets.push(newWidget);
+    res.redirect("/assignment/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/" + widgetId);
 }

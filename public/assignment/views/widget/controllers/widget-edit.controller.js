@@ -2,13 +2,14 @@ define(['app', 'widgetFactory'], function (app) {
     app.controller('editWidgetCntrl',
         ['$routeParams', '$location', 'WidgetService', function ($routeParams, $location, WidgetService) {
             var vm = this;
-            vm.userId = $routeParams.uid;
-            vm.websiteId = $routeParams.wid;
-            vm.pageId = $routeParams.pid;
-            vm.widgetName = $routeParams.wgn;
-            vm.widgetId = $routeParams.wgid;
 
             function init() {
+                vm.userId = $routeParams.uid;
+                vm.websiteId = $routeParams.wid;
+                vm.pageId = $routeParams.pid;
+                vm.widgetName = $routeParams.wgn;
+                vm.widgetId = $routeParams.wgid;
+
                 WidgetService.findWidgetById(vm.widgetId)
                     .then(function (found) {
                         vm.widget = found;
