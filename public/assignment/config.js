@@ -79,6 +79,12 @@ define([], function () {
                 dependencies: ['editWidgetController'],
                 controller: 'editWidgetCntrl',
                 controllerAs: 'model'
+            },
+            '/user/:uid/website/:wid/page/:pid/flickr': {
+                templateUrl: 'views/widget/templates/widget-flickr-search.view.client.html',
+                dependencies: ['FlickrImageSearchController'],
+                controller: 'FlickrImageSearchController',
+                controllerAs: 'model'
             }/*,
             '/user/:uid/website/:wid/page/:pid/widget/new/image': {
                 templateUrl: 'views/widget/editors/widget-image-edit.view.client.html',

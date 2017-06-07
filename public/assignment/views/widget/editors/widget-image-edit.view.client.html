@@ -30,3 +30,6 @@
 
 <a ng-show="model.widget._id" ng-click="model.deleteWidget(model.widget._id)"
    class="btn btn-danger btn-block">Delete</a>
+
+<a ng-hide="model.widget._id" href="user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/flickr"
+   class="btn btn-default btn-block">Search</a>

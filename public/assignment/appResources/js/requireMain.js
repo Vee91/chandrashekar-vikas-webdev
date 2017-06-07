@@ -20,10 +20,12 @@ require.config({
         'widgetsController':'views/widget/controllers/widget-list.controller.client',
         'chooseWidgetController':'views/widget/controllers/widget-new.controller.client',
         'editWidgetController':'views/widget/controllers/widget-edit.controller',
+        'FlickrImageSearchController':'views/widget/controllers/widget-flickr-search.controller.client',
         'userFactory':'services/user.service.client',
         'websiteFactory':'services/website.service.client',
         'pageFactory':'services/page.service.client',
         'widgetFactory':'services/widget.service.client',
+        'flickrFactory':'services/flickr.service.client',
         'wbdv-sortable':'directives/wbdv-sortable'
     },
     // shim: makes external libraries reachable
