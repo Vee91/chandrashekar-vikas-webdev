@@ -128,8 +128,6 @@ module.exports = function (model) {
         var index1 = req.query.start;
         var index2 = req.query.end;
         var pageId = req.params.pageId;
-        console.log(widgets);
-        widgets.splice(index2, 0, widgets.splice(index1, 1)[0]);
-        console.log(widgets);
+        widgetModel.reorderWidget(pageId, index1, index2);
     }
 }

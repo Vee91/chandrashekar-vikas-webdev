@@ -25,6 +25,7 @@ define(['app', 'widgetFactory'], function (app) {
 
             function includeWidgetEdit() {
                 if (vm.widgetName != undefined) {
+                    vm.widgetName = vm.widgetName.replace(/\s+/g, '');
                     var url = 'views/widget/editors/widget-' + vm.widgetName.toLowerCase() + '-edit.view.client.html';
                     return url;
                 }
@@ -37,6 +38,7 @@ define(['app', 'widgetFactory'], function (app) {
             function addWidget(widget) {
                 if (confirm("Are you sure you want to make these changes?")) {
                     if (vm.widgetName != undefined) {
+                        vm.widgetName = vm.widgetName.replace(/\s+/g, '');
                         widget.type = vm.widgetName.toUpperCase();
                         WidgetService.createWidget(vm.pageId, widget)
                             .then(function () {

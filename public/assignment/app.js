@@ -1,4 +1,5 @@
-define(['angular', 'routes', 'angularRoute'], function (angular, routesConfig) {
+define(['angular', 'routes', 'angularRoute', 'textAngularSrc', 'textAngularRangySrc', 'textAngularSanitizeSrc'],
+    function (angular, routesConfig) {
     'use strict';
     var app = angular.module('WAM', ['ngRoute']);
 

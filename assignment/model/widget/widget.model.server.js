@@ -147,27 +147,27 @@ module.exports = function (pageModel) {
     }
 
     function reorderWidget(pageId, start, end) {
-        return widgetModel.find({_page: pageId}, function (error, widgets) {
-            widgets.forEach(function (widget) {
-                if (start > end) {
-                    if (widget.order >= end && widget.order < start) {
-                        widget.order++;
+        widgetModel
+            .find({_page: pageId})
+            .then(function (widgets) {
+                    widgets.forEach(function (widget) {
+                        start = parseInt(start);
+                        end = parseInt(end);
+                        if (start < end) {
+                            if (widget.order === start)
+                                widget.order = end;
+                            else if (widget.order > start && widget.order <= end)
+                                widget.order--;
+                        } else {
+                            if (widget.order === start)
+                                widget.order = end;
+                            else if (widget.order < start && widget.order >= end)
+                                widget.order++;
+                        }
                         widget.save();
-                    } else if (widget.order === start) {
-                        widget.order = end;
-                        widget.save();
-                    }
-                } else {
-                    if (widget.order > start && widget.order <= end) {
-                        widget.order--;
-                        widget.save();
-                    } else if (widget.order === start) {
-                        widget.order = end;
-                        widget.save();
-                    }
-                }
+                    });
+
             });
-        });
     }
 
     

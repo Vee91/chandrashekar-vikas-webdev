@@ -9,12 +9,7 @@ define(['app', 'widgetFactory', 'wbdv-sortable'], function (app) {
 
             function init() {
                 WidgetService.findWidgetsByPageId(vm.pageId)
-                    .then(function (found) {
-                        vm.widgets = found;
-                    });
-               /* $("#widgetList").sortable({
-                    axis: "y"
-                });*/
+                    .then(renderWidgets);
             }
             init();
 
@@ -42,6 +37,18 @@ define(['app', 'widgetFactory', 'wbdv-sortable'], function (app) {
 
             function trustImage(url) {
                 return $sce.trustAsResourceUrl(url);
+            }
+
+            function renderWidgets(widgets) {
+                vm.widgets = widgets.sort(compare);
+            }
+
+            function compare(a,b) {
+                if (a.order < b.order)
+                    return -1;
+                if (a.order > b.order)
+                    return 1;
+                return 0;
             }
         }]);
     return app;
