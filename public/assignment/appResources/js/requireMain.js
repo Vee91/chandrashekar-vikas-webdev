@@ -5,10 +5,13 @@ require.config({
         'angular': 'extResources/js/angular.min',
         'domReady': 'extResources/js/domready',
         'angularRoute': 'extResources/js/angular-route',
+        'angularSanitize':'extResources/js/angular-sanitize',
         'bootstrap': 'extResources/css/bootstrap.min',
-        'textAngularSrc': 'extResources/js/textAngular.min',
-        'textAngularRangySrc': 'extResources/js/textAngular-rangy.min',
+        'rangy-core': 'extResources/js/rangy-core',
+        'rangy-selectionsaverestore': 'extResources/js/rangy-selectionsaverestore',
+        'textAngular-rangy': 'extResources/js/textAngular-rangy.min',
         'textAngularSanitizeSrc': 'extResources/js/textAngular-sanitize.min',
+        'textAngular': 'extResources/js/textAngular.min',
         'routes': 'config',
         'app': 'app',
         'loginController': 'views/user/controllers/login.controller.client',
@@ -39,14 +42,16 @@ require.config({
         'angularRoute': {
             'deps': ['angular']
         },
-        'textAngularSrc': {
+        'angularSanitize': {
             'deps': ['angular']
         },
-        'textAngularRangySrc': {
-            'deps': ['textAngularSrc']
-        },
         'textAngularSanitizeSrc': {
-            'deps': ['textAngularSrc']
+            'deps': ['angular', 'angularSanitize'],
+            'exports':'textAngularSanitizeSrc'
+        },
+        'textAngular':{
+            'deps': ['angular', 'textAngularSanitizeSrc'],
+            'exports':'textAngular'
         }
     }
 });

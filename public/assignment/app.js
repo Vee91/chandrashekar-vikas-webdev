@@ -1,7 +1,7 @@
-define(['angular', 'routes', 'angularRoute', 'textAngularSrc', 'textAngularRangySrc', 'textAngularSanitizeSrc'],
+define(['angular', 'routes', 'angularRoute', 'angularSanitize', 'textAngular'],
     function (angular, routesConfig) {
     'use strict';
-    var app = angular.module('WAM', ['ngRoute']);
+    var app = angular.module('WAM', ['ngRoute', 'ngSanitize', 'textAngular']);
 
     app.factory('httpInterceptor', function ($q, $log, $location) {
         return {
