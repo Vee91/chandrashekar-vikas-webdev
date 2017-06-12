@@ -1,4 +1,3 @@
-<h1>HTML Editor</h1>
 
 <div class="form-group">
     <label for="name">Name</label>
@@ -10,3 +9,5 @@
     <div text-angular ng-model="model.widget.text">
     </div>
 </div>
+
+<a ng-show="model.widget._id" ng-click="model.deleteWidget(model.widget._id)" class="btn btn-danger btn-block">Delete</a>

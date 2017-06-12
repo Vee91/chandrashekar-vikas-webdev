@@ -55,7 +55,7 @@ module.exports = function (pageModel) {
                     }
                 );
         }
-        if (type == 'HEADER') {
+        if (type == 'HEADING') {
             return widgetModel
                 .update(
                     {
@@ -100,7 +100,7 @@ module.exports = function (pageModel) {
                     }
                 );
         }
-        if (type == 'TEXT') {
+        if (type == 'TEXTINPUT') {
             return widgetModel
                 .update(
                     {
