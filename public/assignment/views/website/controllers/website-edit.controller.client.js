@@ -33,7 +33,7 @@ define(['app', 'websiteFactory'], function (app) {
 
             function deleteWebsite(websiteId) {
                 if (confirm("Are you sure you want to delete this website?")) {
-                    WebsiteService.deleteWebsite(websiteId)
+                    WebsiteService.deleteWebsite(vm.userId, websiteId)
                         .then(function () {
                             $location.url("/user/" + vm.userId + "/website");
                         });

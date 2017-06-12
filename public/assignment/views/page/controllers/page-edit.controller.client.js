@@ -34,7 +34,7 @@ define(['app', 'pageFactory'], function (app) {
 
             function deletePage(pageId) {
                 if (confirm("Are you sure you want to delete this page?")) {
-                    PageService.deletePage(pageId)
+                    PageService.deletePage(vm.websiteId, pageId)
                         .then(function () {
                             $location.url("user/" + vm.userId + "/website/" + vm.websiteId + "/page");
                         });

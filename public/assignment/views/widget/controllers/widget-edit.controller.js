@@ -29,7 +29,7 @@ define(['app', 'widgetFactory'], function (app) {
                     return url;
                 }
                 else if (vm.widgetId != undefined) {
-                    var url = 'views/widget/editors/widget-' + vm.widget.widgetType.toLowerCase() + '-edit.view.client.html';
+                    var url = 'views/widget/editors/widget-' + vm.widget.type.toLowerCase() + '-edit.view.client.html';
                     return url;
                 }
             }
@@ -37,7 +37,7 @@ define(['app', 'widgetFactory'], function (app) {
             function addWidget(widget) {
                 if (confirm("Are you sure you want to make these changes?")) {
                     if (vm.widgetName != undefined) {
-                        widget.widgetType = vm.widgetName;
+                        widget.type = vm.widgetName.toUpperCase();
                         WidgetService.createWidget(vm.pageId, widget)
                             .then(function () {
                                 $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
@@ -53,7 +53,7 @@ define(['app', 'widgetFactory'], function (app) {
             }
 
             function deleteWidget(widgetId) {
-                WidgetService.deleteWidget(widgetId)
+                WidgetService.deleteWidget(vm.pageId, widgetId)
                     .then(function () {
                         $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
                     });

@@ -10,7 +10,7 @@ app.get('/assignment/user/*', function(req,res){
     res.sendFile(__dirname + '/public/assignment/index.html');
 });
 
-require ("./test/app.js")(app);
+//require ("./test/app.js")(app);
 require("./assignment/app");
 
 var port = process.env.PORT || 3000;

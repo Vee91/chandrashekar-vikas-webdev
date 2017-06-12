@@ -1,66 +1,76 @@
-var app = require('../../express');
+module.exports = function (model) {
+    var app = require('../../express');
 
-var pages = [
-    {"_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem"},
-    {"_id": "432", "name": "Post 2", "websiteId": "456", "description": "Lorem"},
-    {"_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem"}];
+    var pageModel = model.pageModel;
 
-app.post('/api/website/:websiteId/page', createPage);
-app.get('/api/website/:websiteId/page', findAllPagesForWebsite);
-app.get('/api/page/:pageId', findPageById);
-app.put('/api/page/:pageId', updatePage);
-app.delete('/api/page/:pageId', deletePage);
+    app.post('/api/website/:websiteId/page', createPage);
+    app.get('/api/website/:websiteId/page', findAllPagesForWebsite);
+    app.get('/api/page/:pageId', findPageById);
+    app.put('/api/page/:pageId', updatePage);
+    app.delete('/api/website/:websiteId/page/:pageId', deletePage);
 
-function findAllPagesForWebsite(req, res) {
-    var webId = req.params.websiteId;
-    var result = [];
-    for (var p in pages) {
-        if (pages[p].websiteId === webId) {
-            result.push(pages[p]);
-        }
+    function findAllPagesForWebsite(req, res) {
+        var webId = req.params.websiteId;
+        pageModel.findAllPagesForWebsite(webId)
+            .then(function (result) {
+                    res.send(result);
+                },
+                function (err) {
+                    res.sendStatus(500).send(err);
+                }
+            );
     }
-    res.json(result);
-}
 
-function createPage(req, res) {
-    var page = req.body;
-    pages.push(page);
-    findAllPagesForWebsite(req, res);
-}
-
-function findPageById(req, res) {
-    var pageId = req.params.pageId;
-    for (var p in pages) {
-        if (pages[p]._id === pageId) {
-            res.json(pages[p]);
-            return;
-        }
+    function createPage(req, res) {
+        var page = req.body;
+        var webId = req.params.websiteId;
+        pageModel.createPage(webId, page)
+            .then(function (status) {
+                    if (status) {
+                        findAllPagesForWebsite(req, res);
+                    }
+                },
+                function (err) {
+                    res.sendStatus(500).send(err);
+                }
+            );
     }
-    res.sendStatus(404);
-}
 
-function updatePage(req, res) {
-    var page = req.body;
-    var pageId = req.params.pageId;
-    for (var p in pages) {
-        if (pages[p]._id === pageId) {
-            pages[p].name = page.name;
-            pages[p].description = page.description;
-            res.sendStatus(200);
-            return;
-        }
+    function findPageById(req, res) {
+        var pageId = req.params.pageId;
+        pageModel.findPageById(pageId)
+            .then(function (page) {
+                    res.send(page);
+                },
+                function (err) {
+                    res.sendStatus(500).send(err);
+                }
+            );
     }
-    res.sendStatus(404);
-}
 
-function deletePage(req, res) {
-    var pageId = req.params.pageId;
-    for (var p in pages) {
-        if (pages[p]._id === pageId) {
-            pages.splice(p, 1);
-            res.sendStatus(200);
-            return;
-        }
+    function updatePage(req, res) {
+        var page = req.body;
+        var pageId = req.params.pageId;
+        pageModel.updatePage(pageId, page)
+            .then(function (success) {
+                    res.sendStatus(200);
+                },
+                function (err) {
+                    res.sendStatus(500).send(err);
+                }
+            )
     }
-    res.sendStatus(404);
+
+    function deletePage(req, res) {
+        var pageId = req.params.pageId;
+        var webId = req.params.websiteId;
+        pageModel.deletePage(webId, pageId)
+            .then(function (status) {
+                    res.send(status);
+                },
+                function (err) {
+                    res.sendStatus(500).send(err);
+                }
+            )
+    }
 }

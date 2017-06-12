@@ -7,10 +7,8 @@ define(['app'], function (app) {
         this.deletePage = deletePage;
 
         function createPage(websiteId, page) {
-            var pid = generateUUID();
-            var newPage = {_id: pid, name: page.name, websiteId: websiteId, description: page.description}
             var url = "/api/website/" + websiteId + "/page";
-            return $http.post(url, newPage)
+            return $http.post(url, page)
                 .then(function (response) {
                     return response.data;
                 });
@@ -40,8 +38,8 @@ define(['app'], function (app) {
                 });
         }
 
-        function deletePage(pageId) {
-            var url = "/api/page/" + pageId;
+        function deletePage(websiteId, pageId) {
+            var url = "/api/website/" + websiteId + "/page/" + pageId;
             return $http.delete(url)
                 .then(function (response) {
                     return response.data;

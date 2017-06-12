@@ -25,11 +25,9 @@ define(['app'], function (app) {
         }
 
         function createWebsite(userID, website) {
-            var wid = generateUUID();
             var newWebsite = {
-                _id: wid,
                 name: website.name,
-                developerId: userID,
+                _user: userID,
                 description: website.desc
             };
             var url = "/api/user/"+userID+"/website";
@@ -39,8 +37,8 @@ define(['app'], function (app) {
                 });
         }
 
-        function deleteWebsite(websiteId) {
-            var url = "/api/website/"+websiteId;
+        function deleteWebsite(userId, websiteId) {
+            var url = "/api/user/"+userId+"/website/"+websiteId;
             return $http.delete(url)
                 .then(function (response) {
                     return response.data;

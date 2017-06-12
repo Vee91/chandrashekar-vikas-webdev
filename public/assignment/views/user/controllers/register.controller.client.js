@@ -15,20 +15,21 @@ define(['app', 'userFactory'], function (app) {
                     UserService
                         .findUserByUsername(username)
                         .then(
-                            function () {
-                                vm.error = "Sorry, that username is taken";
-                            },
-                            function () {
-                                var newUser = {
-                                    _id: generateUUID(),
-                                    username: username,
-                                    password: password,
-                                    firstName: username,
-                                    lastName: username,
-                                    email: username + "@gmail.com"
-                                };
-                                return UserService
-                                    .createUser(newUser);
+                            function (foundUser) {
+                                if (foundUser !== 'NotFound') {
+                                    vm.error = "Sorry, that username is taken";
+                                }
+                                else {
+                                    var newUser = {
+                                        username: username,
+                                        password: password,
+                                        firstName: username,
+                                        lastName: username,
+                                        email: username + "@gmail.com"
+                                    };
+                                    return UserService
+                                        .createUser(newUser);
+                                }
                             }
                         )
                         .then(function (user) {

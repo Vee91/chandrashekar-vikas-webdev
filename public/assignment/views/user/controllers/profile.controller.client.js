@@ -18,7 +18,7 @@ define(['app', 'userFactory'], function (app) {
             function saveProfile(user) {
                 if (confirm('Are you sure you want to save changes?')) {
                     UserService
-                        .updateUser(user._id, user)
+                        .updateUser(vm.userId, user)
                         .then(function () {
                             alert("Profile saved successfully");
                         })

@@ -10,8 +10,7 @@ define(['app'], function (app) {
         };
 
         function createWidget(pageId, widget) {
-            widget._id = generateUUID();
-            widget.pageId = pageId;
+            widget._page = pageId;
             var url = "/api/page/" + pageId + "/widget";
             return $http.post(url, widget)
                 .then(function (response) {
@@ -43,8 +42,8 @@ define(['app'], function (app) {
                 });
         }
 
-        function deleteWidget(widgetId) {
-            var url = "/api/widget/" + widgetId;
+        function deleteWidget(pageId, widgetId) {
+            var url = "/api/page/"+pageId+"/widget/" + widgetId;
             return $http.delete(url)
                 .then(function (response) {
                     return response.data;

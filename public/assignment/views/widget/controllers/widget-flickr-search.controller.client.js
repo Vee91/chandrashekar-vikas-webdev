@@ -27,7 +27,7 @@ define(['app','widgetFactory', 'flickrFactory'], function (app) {
                 var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server;
                 url += "/" + photo.id + "_" + photo.secret + "_b.jpg";
                 var widget = {
-                        "widgetType": "IMAGE", "width": "100%",
+                        "type": "IMAGE", "width": "100%",
                         "url": url
                     };
                 WidgetService
