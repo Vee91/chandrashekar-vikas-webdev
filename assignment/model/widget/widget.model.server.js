@@ -135,7 +135,7 @@ module.exports = function (pageModel) {
 
                     })
                     return widgetModel
-                        .remove({
+                            .remove({
                             _id: widgetId
                         }).then(function (status) {
                             return pageModel.deleteWidget(pageId, widgetId)
