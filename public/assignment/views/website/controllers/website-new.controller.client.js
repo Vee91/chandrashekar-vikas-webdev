@@ -1,8 +1,8 @@
 define(['app', 'websiteFactory'], function (app) {
     app.controller('newWebsiteCntrl',
-        ['$location', '$routeParams', 'WebsiteService', function ($location, $routeParams, WebsiteService) {
+        ['$location', '$routeParams', 'WebsiteService', 'currentUser', function ($location, $routeParams, WebsiteService, currentUser) {
             var vm = this;
-            vm.userId = $routeParams.uid;
+            vm.userId = currentUser._id/*$routeParams.uid*/;
 
             // Event handlers
             vm.createWebsite = createWebsite;
@@ -20,7 +20,7 @@ define(['app', 'websiteFactory'], function (app) {
                     WebsiteService.createWebsite(vm.userId, website)
                         .then(function (found) {
                             vm.websites = found;
-                            $location.url("/user/"+vm.userId+"/website")
+                            $location.url("/ph/website")
                         });
                 }
             }

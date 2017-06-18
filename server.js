@@ -1,12 +1,20 @@
 var app = require('./express');
-
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+var passport = require('passport');
+
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(cookieParser());
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(session({secret: "put some text here"}));
+
 
 // configure a public directory to host static content
 app.use(app.express.static(__dirname + '/public'));
-app.get('/assignment/user/*', function(req,res){
+app.get('/assignment/ph/*', function (req, res) {
     res.sendFile(__dirname + '/public/assignment/index.html');
 });
 

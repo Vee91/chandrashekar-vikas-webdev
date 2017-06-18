@@ -1,8 +1,8 @@
 define(['app'], function (app) {
     app.controller('chooseWidgetCntrl',
-        ['$routeParams', '$location', function ($routeParams, $location) {
+        ['$routeParams', '$location', 'currentUser', function ($routeParams, $location, currentUser) {
             var vm = this;
-            vm.userId=$routeParams.uid;
+            vm.userId=currentUser._id;
             vm.websiteId=$routeParams.wid;
             vm.pageId=$routeParams.pid;
             vm.widgetId=$routeParams.wgid;
@@ -31,7 +31,7 @@ define(['app'], function (app) {
             }
 
             function widgetClick(name) {
-                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/new/" + name.toLowerCase());
+                $location.url("/ph/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/new/" + name.toLowerCase());
             }
         }]);
     return app;

@@ -1,15 +1,15 @@
 define(['app', 'userFactory'], function (app) {
     app.controller('profileCntrl',
-        ['$routeParams', 'UserService', function ($routeParams, UserService) {
+        ['$location', '$routeParams', 'UserService', 'currentUser', function ($location, $routeParams, UserService, currentUser) {
 
             var vm = this;
-            vm.userId = $routeParams['uid'];
 
             // Event handlers
             vm.saveProfile = saveProfile;
+            vm.logout = logout;
 
             function init() {
-                UserService.findUserById(vm.userId)
+                UserService.findUserById(currentUser._id)
                     .then(renderUser, userError);
             }
 
@@ -18,7 +18,7 @@ define(['app', 'userFactory'], function (app) {
             function saveProfile(user) {
                 if (confirm('Are you sure you want to save changes?')) {
                     UserService
-                        .updateUser(vm.userId, user)
+                        .updateUser(currentUser._id, user)
                         .then(function () {
                             alert("Profile saved successfully");
                         })
@@ -31,6 +31,15 @@ define(['app', 'userFactory'], function (app) {
 
             function userError() {
                 vm.error = "User not found";
+            }
+
+            function logout() {
+                UserService.logout()
+                    .then(
+                        function (response) {
+                            $location.url("/");
+                        })
+
             }
 
         }]);

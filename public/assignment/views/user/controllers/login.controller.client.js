@@ -6,10 +6,10 @@ define(['app', 'userFactory'], function (app) {
             //Event handlers
             vm.login = login;
 
-            function login(username, password) {
-                    UserService.findUserByCredentials(username, password).then(function (found) {
+            function login(user) {
+                    UserService.login(user).then(function (found) {
                         if (found != null) {
-                            $location.url("/user/" + found._id);
+                            $location.url("/ph/profile");
                         }
                         else {
                             vm.error = "Username and Password combination does not exist";

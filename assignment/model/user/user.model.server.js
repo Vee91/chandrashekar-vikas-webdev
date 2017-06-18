@@ -11,10 +11,12 @@ module.exports = function () {
         updateUser: updateUser,
         addWebsite: addWebsite,
         deleteWebsite: deleteWebsite,
+        findUserByFacebookId: findUserByFacebookId,
     };
     return factory;
 
     function createUser(user) {
+        user.roles = ['USER'];
         return userModel.create(user);
     }
 
@@ -35,21 +37,21 @@ module.exports = function () {
 
     function findUserByCredentials(username, password) {
         return userModel.findOne({
-                username: username,
-                password: password
-            });
+            username: username,
+            password: password
+        });
     }
 
     function findUserByUsername(username) {
         return userModel.findOne({
-                username: username
-            });
+            username: username
+        });
     }
 
     function deleteUser(userId) {
         return userModel.remove({
-                _id: userId
-            });
+            _id: userId
+        });
     }
 
     function addWebsite(userId, websiteId) {
@@ -69,5 +71,9 @@ module.exports = function () {
                 user.websites.splice(index, 1);
                 return user.save();
             });
+    }
+
+    function findUserByFacebookId(facebookId) {
+        return userModel.findOne({'facebook.id': facebookId});
     }
 }

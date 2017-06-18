@@ -1,8 +1,8 @@
 define(['app', 'websiteFactory'], function (app) {
     app.controller('editWebsiteCntrl',
-        ['$location', '$routeParams', 'WebsiteService', function ($location, $routeParams, WebsiteService) {
+        ['$location', '$routeParams', 'WebsiteService', 'currentUser', function ($location, $routeParams, WebsiteService, currentUser) {
             var vm = this;
-            vm.userId = $routeParams.uid;
+            vm.userId = currentUser._id;
             vm.websiteId = $routeParams.wid;
 
             // Event handlers
@@ -26,7 +26,7 @@ define(['app', 'websiteFactory'], function (app) {
                 if (confirm("Are you sure you want to update the website?")) {
                     WebsiteService.updateWebsite(website._id, website)
                         .then(function () {
-                            $location.url("/user/" + vm.userId + "/website");
+                            $location.url("/ph/website");
                         });
                 }
             }
@@ -35,7 +35,7 @@ define(['app', 'websiteFactory'], function (app) {
                 if (confirm("Are you sure you want to delete this website?")) {
                     WebsiteService.deleteWebsite(vm.userId, websiteId)
                         .then(function () {
-                            $location.url("/user/" + vm.userId + "/website");
+                            $location.url("/ph/website");
                         });
                 }
             }

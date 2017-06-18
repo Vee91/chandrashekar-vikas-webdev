@@ -2,7 +2,7 @@
     <div class="container-fluid">
 
         <div id="leftArrow" class="col-xs-2 col-sm-1">
-            <a href="user/{{model.userId}}/website"><span class="glyphicon glyphicon-chevron-left header-text"></span></a>
+            <a href="ph/website"><span class="glyphicon glyphicon-chevron-left header-text"></span></a>
         </div>
 
         <div class="hidden-xs col-sm-3 header-text">
@@ -28,8 +28,8 @@
 <div>
     <div class="hidden-xs col-sm-5">
         <ul ng-repeat="website in model.websites" class="list-group">
-            <a href="user/{{model.userId}}/website/{{website._id}}/page"><span class="list-text">{{website.name}}</span></a>
-            <a href="user/{{model.userId}}/website/{{website._id}}" class="pull-right">
+            <a href="ph/website/{{website._id}}/page"><span class="list-text">{{website.name}}</span></a>
+            <a href="ph/website/{{website._id}}" class="pull-right">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
         </ul>

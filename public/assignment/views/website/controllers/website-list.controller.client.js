@@ -1,8 +1,8 @@
 define(['app', 'websiteFactory'], function (app) {
     app.controller('websitesCntrl',
-        ['$routeParams', 'WebsiteService', function ($routeParams, WebsiteService) {
+        ['$routeParams', 'WebsiteService', 'currentUser', function ($routeParams, WebsiteService, currentUser) {
             var vm = this;
-            vm.userId = $routeParams.uid;
+            vm.userId = currentUser._id;
 
             function init() {
                 WebsiteService.findWebsitesByUser(vm.userId)

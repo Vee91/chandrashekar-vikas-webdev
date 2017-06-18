@@ -1,8 +1,8 @@
 define(['app', 'pageFactory'], function (app) {
     app.controller('pagesCntrl',
-        ['$routeParams', 'PageService', function ($routeParams, PageService) {
+        ['$routeParams', 'PageService', 'currentUser', function ($routeParams, PageService, currentUser) {
             var vm = this;
-            vm.userId = $routeParams.uid;
+            vm.userId = currentUser._id;
             vm.websiteId = $routeParams.wid;
 
             function init() {

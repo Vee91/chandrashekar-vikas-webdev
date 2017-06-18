@@ -6,7 +6,6 @@ define(['app', 'widgetFactory'], function (app) {
         function linkFunc(scope, element, attributes) {
 
             var pageId = $routeParams.pid;
-            // var widgetId = $routeParams.wid;
             var index1 = -1;
             var index2 = -1;
 

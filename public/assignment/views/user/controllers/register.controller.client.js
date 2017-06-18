@@ -28,12 +28,12 @@ define(['app', 'userFactory'], function (app) {
                                         email: username + "@gmail.com"
                                     };
                                     return UserService
-                                        .createUser(newUser);
+                                        .register(newUser);
                                 }
                             }
                         )
                         .then(function (user) {
-                            $location.url('/user/' + user._id);
+                            $location.url('/ph/profile');
                         });
                 }
                 else {

@@ -6,6 +6,9 @@ define(['app'], function (app) {
             findUserById: findUserById,
             findUserByUsername: findUserByUsername,
             updateUser: updateUser,
+            login: login,
+            logout: logout,
+            register: register,
         };
 
         function createUser(user) {
@@ -44,6 +47,26 @@ define(['app'], function (app) {
                 .then(function (response) {
                     return response.data;
                 });
+        }
+        
+        function register(user) {
+            return $http.post("/api/register", user).then(
+                function (response) {
+                    return response.data;
+                });
+        }
+
+
+        function login(user) {
+            var url = "/api/login";
+            return $http.post(url, user)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+        
+        function logout() {
+            return $http.post("/api/logout");
         }
 
         return factory;

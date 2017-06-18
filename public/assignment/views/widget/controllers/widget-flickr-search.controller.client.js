@@ -1,8 +1,8 @@
 define(['app','widgetFactory', 'flickrFactory'], function (app) {
     app.controller('FlickrImageSearchController',
-        ['$routeParams', '$location', 'FlickrService', 'WidgetService', function ($routeParams, $location, FlickrService, WidgetService) {
+        ['$routeParams', '$location', 'FlickrService', 'WidgetService', 'currentUser', function ($routeParams, $location, FlickrService, WidgetService, currentUser) {
             var vm = this;
-            vm.userId = $routeParams.uid;
+            vm.userId = currentUser._id;
             vm.websiteId = $routeParams.wid;
             vm.pageId = $routeParams.pid;
 
@@ -33,7 +33,7 @@ define(['app','widgetFactory', 'flickrFactory'], function (app) {
                 WidgetService
                     .createWidget(vm.pageId, widget)
                     .then(function () {
-                        $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+                        $location.url("/ph/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
                     });
              }
 

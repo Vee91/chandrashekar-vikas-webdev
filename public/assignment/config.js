@@ -5,99 +5,111 @@ define([], function () {
             '/': {
                 templateUrl: 'views/user/templates/login.view.client.html',
                 dependencies: ['loginController'],
-                controller: 'loginCntrl',
-                controllerAs: 'model'
+                cntrl: 'loginCntrl',
+                cntrlAs: 'model'
             },
-            "/user/:uid": {
+            "/ph/profile": {
                 templateUrl: 'views/user/templates/profile.view.client.html',
                 dependencies: ['profileController'],
-                controller: 'profileCntrl',
-                controllerAs: 'model'
+                cntrl: 'profileCntrl',
+                cntrlAs: 'model',
+                res: 'checkLoggedin'
             },
             '/register': {
                 templateUrl: 'views/user/templates/register.view.client.html',
                 dependencies: ['registerController'],
-                controller: 'registerCntrl',
-                controllerAs: 'model'
+                cntrl: 'registerCntrl',
+                cntrlAs: 'model'
             },
-            "/user/:uid/website": {
+            "/ph/website": {
                 templateUrl: 'views/website/templates/website-list.view.client.html',
                 dependencies: ['websitesController'],
-                controller: 'websitesCntrl',
-                controllerAs: 'model'
+                cntrl: 'websitesCntrl',
+                cntrlAs: 'model',
+                res: 'checkLoggedin'
             },
-            '/user/:uid/website/new': {
+            '/ph/website/new': {
                 templateUrl: 'views/website/templates/website-new.view.client.html',
                 dependencies: ['newWebsiteController'],
-                controller: 'newWebsiteCntrl',
-                controllerAs: 'model'
+                cntrl: 'newWebsiteCntrl',
+                cntrlAs: 'model',
+                res: 'checkLoggedin'
             },
-            '/user/:uid/website/:wid': {
+            '/ph/website/:wid': {
                 templateUrl: 'views/website/templates/website-edit.view.client.html',
                 dependencies: ['editWebsiteController'],
-                controller: 'editWebsiteCntrl',
-                controllerAs: 'model'
+                cntrl: 'editWebsiteCntrl',
+                cntrlAs: 'model',
+                res: 'checkLoggedin'
             },
-            '/user/:uid/website/:wid/page': {
+            '/ph/website/:wid/page': {
                 templateUrl: 'views/page/templates/page-list.view.client.html',
                 dependencies: ['pagesController'],
-                controller: 'pagesCntrl',
-                controllerAs: 'model'
+                cntrl: 'pagesCntrl',
+                cntrlAs: 'model',
+                res: 'checkLoggedin'
             },
-            '/user/:uid/website/:wid/page/new': {
+            '/ph/website/:wid/page/new': {
                 templateUrl: 'views/page/templates/page-new.view.client.html',
                 dependencies: ['newPageController'],
-                controller: 'newpageCntrl',
-                controllerAs: 'model'
+                cntrl: 'newpageCntrl',
+                cntrlAs: 'model',
+                res: 'checkLoggedin'
             },
-            '/user/:uid/website/:wid/page/:pid': {
+            '/ph/website/:wid/page/:pid': {
                 templateUrl: 'views/page/templates/page-edit.view.client.html',
                 dependencies: ['editPageController'],
-                controller: 'editPageCntrl',
-                controllerAs: 'model'
+                cntrl: 'editPageCntrl',
+                cntrlAs: 'model',
+                res: 'checkLoggedin'
             },
-            '/user/:uid/website/:wid/page/:pid/widget': {
+            '/ph/website/:wid/page/:pid/widget': {
                 templateUrl: 'views/widget/templates/widget-list.view.client.html',
                 dependencies: ['widgetsController'],
-                controller: 'widgetsCntrl',
-                controllerAs: 'model'
+                cntrl: 'widgetsCntrl',
+                cntrlAs: 'model',
+                res: 'checkLoggedin'
             },
-            '/user/:uid/website/:wid/page/:pid/widget/new': {
+            '/ph/website/:wid/page/:pid/widget/new': {
                 templateUrl: 'views/widget/templates/widget-chooser.view.client.html',
                 dependencies: ['chooseWidgetController'],
-                controller: 'chooseWidgetCntrl',
-                controllerAs: 'model'
+                cntrl: 'chooseWidgetCntrl',
+                cntrlAs: 'model',
+                res: 'checkLoggedin'
             },
-            '/user/:uid/website/:wid/page/:pid/widget/new/:wgn': {
+            '/ph/website/:wid/page/:pid/widget/new/:wgn': {
                 templateUrl: 'views/widget/templates/widget-edit.view.client.html',
                 dependencies: ['editWidgetController'],
-                controller: 'editWidgetCntrl',
-                controllerAs: 'model'
+                cntrl: 'editWidgetCntrl',
+                cntrlAs: 'model',
+                res: 'checkLoggedin'
             },
-            '/user/:uid/website/:wid/page/:pid/widget/:wgid': {
+            '/ph/website/:wid/page/:pid/widget/:wgid': {
                 templateUrl: 'views/widget/templates/widget-edit.view.client.html',
                 dependencies: ['editWidgetController'],
-                controller: 'editWidgetCntrl',
-                controllerAs: 'model'
+                cntrl: 'editWidgetCntrl',
+                cntrlAs: 'model',
+                res: 'checkLoggedin'
             },
-            '/user/:uid/website/:wid/page/:pid/flickr': {
+            '/ph/website/:wid/page/:pid/flickr': {
                 templateUrl: 'views/widget/templates/widget-flickr-search.view.client.html',
                 dependencies: ['FlickrImageSearchController'],
-                controller: 'FlickrImageSearchController',
-                controllerAs: 'model'
+                cntrl: 'FlickrImageSearchController',
+                cntrlAs: 'model',
+                res: 'checkLoggedin'
             }/*,
-            '/user/:uid/website/:wid/page/:pid/widget/new/image': {
-                templateUrl: 'views/widget/editors/widget-image-edit.view.client.html',
-                dependencies: ['editWidgetController'],
-                controller: 'editWidgetCntrl',
-                controllerAs: 'model'
-            },
-            '/user/:uid/website/:wid/page/:pid/widget/new/youtube': {
-                templateUrl: 'views/widget/editors/widget-youtube-edit.view.client.html',
-                dependencies: ['editWidgetController'],
-                controller: 'editWidgetCntrl',
-                controllerAs: 'model'
-            }*/
+             '/ph/website/:wid/page/:pid/widget/new/image': {
+             templateUrl: 'views/widget/editors/widget-image-edit.view.client.html',
+             dependencies: ['editWidgetController'],
+             cntrl: 'editWidgetCntrl',
+             cntrlAs: 'model'
+             },
+             '/ph/website/:wid/page/:pid/widget/new/youtube': {
+             templateUrl: 'views/widget/editors/widget-youtube-edit.view.client.html',
+             dependencies: ['editWidgetController'],
+             cntrl: 'editWidgetCntrl',
+             cntrlAs: 'model'
+             }*/
         }
     };
     return routesConfig;

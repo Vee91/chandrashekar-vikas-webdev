@@ -1,8 +1,8 @@
 define(['app', 'widgetFactory', 'wbdv-sortable'], function (app) {
     app.controller('widgetsCntrl',
-        ['$routeParams', '$sce', 'WidgetService', function ($routeParams, $sce, WidgetService) {
+        ['$routeParams', '$sce', 'WidgetService', 'currentUser', function ($routeParams, $sce, WidgetService, currentUser) {
             var vm = this;
-            vm.userId = $routeParams.uid;
+            vm.userId = currentUser._id;
             vm.websiteId = $routeParams.wid;
             vm.pageId = $routeParams.pid;
             vm.widgetId = $routeParams.wgid;

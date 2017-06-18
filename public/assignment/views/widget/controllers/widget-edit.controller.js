@@ -1,10 +1,10 @@
 define(['app', 'widgetFactory'], function (app) {
     app.controller('editWidgetCntrl',
-        ['$routeParams', '$location', 'WidgetService', function ($routeParams, $location, WidgetService) {
+        ['$routeParams', '$location', 'WidgetService', 'currentUser', function ($routeParams, $location, WidgetService, currentUser) {
             var vm = this;
 
             function init() {
-                vm.userId = $routeParams.uid;
+                vm.userId = currentUser._id;
                 vm.websiteId = $routeParams.wid;
                 vm.pageId = $routeParams.pid;
                 vm.widgetName = $routeParams.wgn;
@@ -42,13 +42,13 @@ define(['app', 'widgetFactory'], function (app) {
                         widget.type = vm.widgetName.toUpperCase();
                         WidgetService.createWidget(vm.pageId, widget)
                             .then(function () {
-                                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+                                $location.url("/ph/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
                             });
                     }
                     else if (vm.widgetId != undefined) {
                         WidgetService.updateWidget(vm.widget._id, vm.widget)
                             .then(function () {
-                                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+                                $location.url("/ph/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
                             });
                     }
                 }
@@ -57,7 +57,7 @@ define(['app', 'widgetFactory'], function (app) {
             function deleteWidget(widgetId) {
                 WidgetService.deleteWidget(vm.pageId, widgetId)
                     .then(function () {
-                        $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+                        $location.url("/ph/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
                     });
             }
 
