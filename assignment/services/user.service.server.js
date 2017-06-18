@@ -23,8 +23,8 @@ module.exports = function (model) {
     app.get ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
-            successRedirect: '/profile',
-            failureRedirect: '/'
+            successRedirect: '/assignment/profile',
+            failureRedirect: '/assignment'
         }));
     app.get('/api/user/:uid', findUserById);
     app.put('/api/user/:uid', updateUser);
