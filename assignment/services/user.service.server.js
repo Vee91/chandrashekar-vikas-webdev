@@ -1,6 +1,6 @@
 module.exports = function (model) {
     var app = require('../../express');
-
+    var bcrypt = require("bcrypt-nodejs");
     var passport = require('passport');
 
     var facebookConfig = {
@@ -114,6 +114,7 @@ module.exports = function (model) {
 
     function register(req, res) {
         var user = req.body;
+        user.password = bcrypt.hashSync(user.password);
         userModel
             .createUser(user).then(
             function (user) {
@@ -165,9 +166,9 @@ module.exports = function (model) {
 
     function localStrategy(username, password, done) {
         userModel
-            .findUserByCredentials(username, password)
+            .findUserByUsername(username)
             .then(function (user) {
-                if (user) {
+                if (user && bcrypt.compareSync(password, user.password)) {
                     done(null, user);
                 } else {
                     done(null, false);

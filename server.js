@@ -9,7 +9,12 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(session({secret: "put some text here"}));
+app.use(session({
+    // secret: process.env.SESSION_SECRET
+    secret: 'this is the secret',
+    resave: true,
+    saveUninitialized: true
+}));
 
 
 // configure a public directory to host static content
