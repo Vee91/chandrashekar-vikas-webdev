@@ -33,6 +33,14 @@ body {
     color: white;
 }
 
+.dirty-field{
+    border:1px solid red;
+}
+
+.disabled {
+    cursor: not-allowed;
+}
+
 .list-text{
     color: #0B3C58;
 }

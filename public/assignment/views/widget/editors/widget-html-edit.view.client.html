@@ -1,13 +1,26 @@
-
-<div class="form-group">
-    <label for="name">Name</label>
-    <input id="name" ng-model="model.widget.name" class="form-control">
-</div>
-
-<div class="form-group">
-    <label>Text</label>
-    <div text-angular ng-model="model.widget.text">
+<ng-form role="form" name="widgetForm" ng-submit="" id="widgetForm" novalidate>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <div data-ng-show="widgetForm.name.$dirty && widgetForm.name.$error.required">
+            Name is required
+        </div>
+        <input id="name" name="name"
+               data-ng-class="{'dirty-field': widgetForm.name.$dirty && widgetForm.name.$error.required}"
+               ng-model="model.widget.name" class="form-control"
+               placeholder="Name" ng-required="true">
     </div>
-</div>
 
-<a ng-show="model.widget._id" ng-click="model.deleteWidget(model.widget._id)" class="btn btn-danger btn-block">Delete</a>
+    <div class="form-group">
+        <label>Text</label>
+        <div text-angular ng-model="model.widget.text">
+        </div>
+    </div>
+
+    <button ng-disabled="widgetForm.$invalid" ng-hide="model.widget._id" type="button"
+            ng-click="model.addWidget(model.widget);" class="btn btn-default btn-block secondary-button">Add
+    </button>
+    <button ng-disabled="widgetForm.$invalid" ng-show="model.widget._id" type="button"
+            ng-click="model.addWidget(model.widget);" class="btn btn-default btn-block secondary-button">Update
+    </button>
+    <a ng-show="model.widget._id" ng-click="model.deleteWidget(model.widget._id)" class="btn btn-danger btn-block">Delete</a>
+</ng-form>

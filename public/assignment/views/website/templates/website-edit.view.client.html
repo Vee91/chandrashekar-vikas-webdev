@@ -17,8 +17,9 @@
             Edit Website
         </div>
 
-        <div id="okIcon" class="col-xs-2 col-sm-1">
-            <a ng-click="model.saveWebsite(model.website);"><span class="glyphicon glyphicon-ok header-text pull-right"></span></a>
+        <div ng-hide="websiteForm.$invalid" id="okIcon" class="col-xs-2 col-sm-1">
+            <a ng-click="model.saveWebsite(model.website);"><span
+                    class="glyphicon glyphicon-ok header-text pull-right"></span></a>
         </div>
 
     </div>
@@ -36,15 +37,24 @@
     </div>
 
     <div class="col-xs-12 col-sm-7">
-        <div class="form-group">
-            <label for="name"> Name</label>
-            <input id="name" ng-model="model.website.name" type="text" class="form-control" placeholder="Name"/>
-        </div>
-        <div class="form-group">
-            <label for="description">Description</label>
-            <textarea id="description" ng-model="model.website.description" rows="6" class="form-control" placeholder="Description"></textarea>
-        </div>
-        <a ng-click="model.deleteWebsite(model.website._id);" class="btn btn-danger btn-block">Delete</a>
+        <ng-form role="form" name="websiteForm" ng-submit="" id="websiteForm" novalidate>
+            <div class="form-group">
+                <label for="name"> Name</label>
+                <div data-ng-show="websiteForm.name.$dirty && websiteForm.name.$error.required">
+                    Name is required
+                </div>
+                <input id="name" name="name"
+                       data-ng-class="{'dirty-field': websiteForm.name.$dirty && websiteForm.name.$error.required}"
+                       ng-model="model.website.name" type="text" class="form-control" placeholder="Name"
+                       ng-required="true"/>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" ng-model="model.website.description" rows="6" class="form-control"
+                          placeholder="Description"></textarea>
+            </div>
+            <a ng-click="model.deleteWebsite(model.website._id);" class="btn btn-danger btn-block">Delete</a>
+        </ng-form>
     </div>
 </div>
 <div data-ng-include data-src="'footer.html'"></div>

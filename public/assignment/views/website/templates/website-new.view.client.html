@@ -17,8 +17,9 @@
             New Website
         </div>
 
-        <div id="okIcon" class="col-xs-2 col-sm-1">
-            <a ng-click="model.createWebsite(model.newWebsite);"><span class="glyphicon glyphicon-ok header-text pull-right"></span></a>
+        <div ng-hide="websiteForm.$invalid" id="okIcon" class="col-xs-2 col-sm-1">
+            <a ng-click="model.createWebsite(model.newWebsite);"><span
+                    class="glyphicon glyphicon-ok header-text pull-right"></span></a>
         </div>
 
     </div>
@@ -36,14 +37,23 @@
     </div>
 
     <div class="col-xs-12 col-sm-7">
-        <div class="form-group">
-            <label for="name"> Name</label>
-            <input id="name" ng-model="model.newWebsite.name" type="text" class="form-control" placeholder="Name"/>
-        </div>
-        <div class="form-group">
-            <label for="description">Description</label>
-            <textarea id="description" ng-model="model.newWebsite.desc" rows="6" class="form-control" placeholder="Description"></textarea>
-        </div>
+        <ng-form role="form" name="websiteForm" ng-submit="" id="websiteForm" novalidate>
+            <div class="form-group">
+                <label for="name"> Name</label>
+                <div data-ng-show="websiteForm.name.$dirty && websiteForm.name.$error.required">
+                    Name is required
+                </div>
+                <input id="name" name="name"
+                       data-ng-class="{'dirty-field': websiteForm.name.$dirty && websiteForm.name.$error.required}"
+                       ng-model="model.newWebsite.name" type="text" class="form-control" placeholder="Name"
+                       ng-required="true"/>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" ng-model="model.newWebsite.desc" rows="6" class="form-control"
+                          placeholder="Description"></textarea>
+            </div>
+        </ng-form>
     </div>
 </div>
 <div data-ng-include data-src="'footer.html'"></div>

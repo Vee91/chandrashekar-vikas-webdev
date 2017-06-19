@@ -15,22 +15,41 @@
     <div ng-show="model.error" class="alert alert-danger">
         {{model.error}}
     </div>
-    <div class="form-group">
-        <label for="username"> Username</label>
-        <input id="username" ng-model="username" type="text" class="form-control" placeholder="eg: john123"/>
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input id="password" ng-model="password" type="password" class="form-control" placeholder="eg: qwerty123"/>
-    </div>
-    <div class="form-group">
-        <label for="confirmpassword">Confirm Password</label>
-        <input id="confirmpassword" ng-model="confirmpassword" type="password" class="form-control"
-               placeholder="eg: qwerty123"/>
-    </div>
-    <a ng-click="model.createUser(username, password, confirmpassword);"
-       class="btn btn-default btn-block secondary-button">Register</a>
-    <a href="/assignment" class="btn btn-danger btn-block">Cancel</a>
+    <ng-form role="form" name="registerForm" ng-submit="" id="registerForm" novalidate>
+        <div class="form-group">
+            <label for="username"> Username</label>
+            <div data-ng-show="registerForm.username.$dirty && registerForm.username.$error.required">Username is
+                required.
+            </div>
+            <input id="username" name="username"
+                   data-ng-class="{'dirty-field': registerForm.username.$dirty && registerForm.username.$error.required}"
+                   ng-model="username" type="text" class="form-control"
+                   placeholder="eg: john123" ng-required="true"/>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <div data-ng-show="registerForm.password.$dirty && registerForm.password.$error.required">Password is
+                required.
+            </div>
+            <input id="password" name="password"
+                   data-ng-class="{'dirty-field': registerForm.password.$dirty && registerForm.password.$error.required}"
+                   ng-model="password" type="password" class="form-control" placeholder="eg: qwerty123"
+                   ng-required="true"/>
+        </div>
+        <div class="form-group">
+            <label for="confirmpassword">Confirm Password</label>
+            <div data-ng-show="registerForm.confirmpassword.$dirty && registerForm.confirmpassword.$error.required">
+                Password is required.
+            </div>
+            <input id="confirmpassword" name="confirmpassword"
+                   data-ng-class="{'dirty-field': registerForm.confirmpassword.$dirty && registerForm.confirmpassword.$error.required}"
+                   ng-model="confirmpassword" type="password" class="form-control"
+                   placeholder="eg: qwerty123" ng-required="true"/>
+        </div>
+        <button type="button" ng-click="model.createUser(username, password, confirmpassword);"
+           class="btn btn-default btn-block secondary-button" ng-disabled="registerForm.$invalid">Register</button>
+        <a href="/assignment" class="btn btn-danger btn-block">Cancel</a>
+    </ng-form>
 </div>
 
 

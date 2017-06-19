@@ -8,14 +8,13 @@ define(['app', 'userFactory'], function (app) {
 
             function login(user) {
                     UserService.login(user).then(function (found) {
-                        if (found != null) {
+                        if (found != null || found != undefined) {
                             $location.url("/ph/profile");
                         }
                         else {
                             vm.error = "Username and Password combination does not exist";
                         }
                     });
-
             }
 
 
