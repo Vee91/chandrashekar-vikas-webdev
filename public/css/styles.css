@@ -1572,7 +1572,7 @@ a {
 
 a {
     text-decoration: none;
-    color: #009688 !important
+    color: #009688
 }
 
 .text-light-grey, .hover-text-light-grey:hover, .text-light-gray, .hover-text-light-gray:hover {
@@ -1609,4 +1609,8 @@ a {
 
 .border-grey, .hover-border-grey:hover, .border-gray, .hover-border-gray:hover {
     border-color: #bbb !important
+}
+
+.footer-link {
+    color: white; !important;
 }
