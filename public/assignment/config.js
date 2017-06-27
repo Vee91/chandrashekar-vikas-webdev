@@ -97,19 +97,19 @@ define([], function () {
                 cntrl: 'FlickrImageSearchController',
                 cntrlAs: 'model',
                 res: 'checkLoggedin'
-            }/*,
-             '/ph/website/:wid/page/:pid/widget/new/image': {
-             templateUrl: 'views/widget/editors/widget-image-edit.view.client.html',
-             dependencies: ['editWidgetController'],
-             cntrl: 'editWidgetCntrl',
-             cntrlAs: 'model'
-             },
-             '/ph/website/:wid/page/:pid/widget/new/youtube': {
-             templateUrl: 'views/widget/editors/widget-youtube-edit.view.client.html',
-             dependencies: ['editWidgetController'],
-             cntrl: 'editWidgetCntrl',
-             cntrlAs: 'model'
-             }*/
+            },
+            '/ph/champpoc': {
+                templateUrl: 'POC/champpoc.html',
+                dependencies: ['champpocController'],
+                cntrl: 'champpocController',
+                cntrlAs: 'model'
+            },
+            '/ph/pocChampDetails/:c1': {
+                templateUrl: 'POC/champpocdetails.html',
+                dependencies: ['champpocdetailsController'],
+                cntrl: 'champpocdetailsController',
+                cntrlAs: 'model'
+            }
         }
     };
     return routesConfig;
